@@ -11,18 +11,24 @@
     top: 0px;
     left: 0px;
     right:0px;
+    border-width: 4px;
+    border-color: rgb(0,50,0);
+    border-style:solid;
+    box-shadow: 10px;
     z-index: 9999;
 }
 
 .navigation li {
     display: inline-block; 
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .navigation a {
+    text-decoration: none;
     text-decoration-color: black;
     color: black;
     font-size: 15;
+    
 }
 
 .header {
@@ -31,6 +37,14 @@
 }
 
 .text {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: darkgreen;
+    border-width: 4px;
+    border-color: rgb(0,50,0);
+    border-radius: 20px;
+    border-style: solid;
+    margin-top: 10px;
     margin-left: 5%;
     margin-right: 5%;
     font-size: 30px;
@@ -57,43 +71,43 @@
 }
 @media screen and (min-width:600px){
     .navigation a{
-        font-size: 45px;
+        font-size: 35px;
     }
     .navigation li{
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     .text{
        font-size: 43px; 
     }
     .header{
-        padding-top: 120px;
+        padding-top: 107px;
         font-size: 27px;
     }
 }
 @media screen and (min-width:800px){
     .navigation a{
-        font-size: 55px;
+        font-size: 40px;
     }
     .navigation li{
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     .text{
        font-size: 53px; 
     }
     .header{
-        padding-top: 120px;
+        padding-top: 114px;
         font-size: 35px;
     }
 }
 @media screen and(min-width:1080px){
    .navigation a{
-        font-size: 55px;
+        font-size: 50px;
     }
     .navigation li{
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     .text{
        font-size: 30px; 
