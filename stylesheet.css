@@ -1,8 +1,11 @@
 @import 'normalize.css';
 
-
+.background {
+    background-color: rgba(0,100,0,0.5)
+}
 .navigation {
-    background-color: rgba(0, 100, 0, 0.95);
+    width: 100%;
+    background-color: rgb(0, 100, 0);
     text-align:center;
     position: fixed;
     top: 0px;
@@ -32,11 +35,15 @@
     margin-right: 5%;
     font-size: 30px;
 }
-.image{
+.image1{
     display: block;
     margin: auto;
     width: 90%;
     max-width: 414px; 
+}
+.image2{
+    display: block;
+    width: 100%;
 }
 
 @media screen and (min-width: 300px){
@@ -44,8 +51,8 @@
         font-size: 25px;
     }
     .navigation li{
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 @media screen and (min-width:600px){
@@ -53,8 +60,8 @@
         font-size: 45px;
     }
     .navigation li{
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     .text{
        font-size: 43px; 
@@ -69,8 +76,8 @@
         font-size: 55px;
     }
     .navigation li{
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     .text{
        font-size: 53px; 
