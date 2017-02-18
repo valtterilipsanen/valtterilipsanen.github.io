@@ -3,7 +3,7 @@
 
 .navigation {
     background-color: rgba(0, 100, 0, 0.95);
-    text-align:left;
+    text-align:center;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -18,11 +18,23 @@
 }
 .navigation a {
     text-decoration-color: black;
-    padding-left: 50%;
-    padding-right: 50%;
+    color: black;
     font-size: 200%;
 }
+
 .header {
     text-align: center;
     padding-top: 20%;
+}
+.text {
+    
+}
+@media screen and (max-width: 500px){
+    .navigation a{
+        font-size: 150%;
+    }
+    .navigation li{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }
