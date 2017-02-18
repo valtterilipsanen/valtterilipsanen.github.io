@@ -13,28 +13,48 @@
 
 .navigation li {
     display: inline-block; 
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .navigation a {
     text-decoration-color: black;
     color: black;
-    font-size: 200%;
+    font-size: 15;
 }
 
 .header {
     text-align: center;
-    padding-top: 20%;
+    padding-top: 100px;
 }
+
 .text {
-    
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
 }
-@media screen and (max-width: 500px){
+
+@media screen and (min-width: 300px){
     .navigation a{
-        font-size: 150%;
+        font-size: 25px;
     }
     .navigation li{
         padding-top: 20px;
         padding-bottom: 20px;
+    }
+}
+@media screen and (min-width:600px){
+    .navigation a{
+        font-size: 45px;
+    }
+    .navigation li{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .text{
+       font-size: 43px; 
+    }
+    .header{
+        padding-top: 140px;
+        font-size: 27px;
     }
 }
