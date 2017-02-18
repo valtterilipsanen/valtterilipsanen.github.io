@@ -58,3 +58,19 @@
         font-size: 27px;
     }
 }
+@media screen and (min-width:1000px){
+    .navigation a{
+        font-size: 55px;
+    }
+    .navigation li{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .text{
+       font-size: 53px; 
+    }
+    .header{
+        padding-top: 150px;
+        font-size: 35px;
+    }
+}
