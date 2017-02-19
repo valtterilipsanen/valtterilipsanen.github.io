@@ -3,7 +3,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .background {
-    background-color: rgba(0,100,0,0.85)
+    background-image: url(assets/tausta.jpg);
+    background-color: rgba(0,100,0,0.85);
 }
 .navigation {
     width: 100%;
@@ -19,15 +20,18 @@
     box-shadow: 10px;
     z-index: 9999;
 }
-
+.navigation ul{
+    margin-right: 20px;
+    
+}
 .navigation li {
     display: inline-block; 
     padding-top: 5px;
     padding-bottom: 5px;
 }
 .navigation a {
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 7px;
+    margin-left: 7px;
     text-decoration: none;
     text-decoration-color: black;
     color: black; 
@@ -44,13 +48,31 @@
     text-align: center;
     padding-top: 70px;
 }
+.footer {
+    display: block;
+    float: none;
+    max-width: 1080px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgba(0,100,0,0.8);
+    border-width: 4px;
+    border-color: rgb(0,50,0);
+    border-radius: 10px;
+    border-style: solid;
+    margin-top: 10px;
+    margin-left:5%;
+    margin-right: 5%;
+    font-size: 20px;
+    font-family: 'Montserrat',regular; 
+}
 
 .text1 {
     max-width: 1080px;
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: darkgreen;
+    background-color: rgba(0,100,0,0.8);
     border-width: 4px;
     border-color: rgb(0,50,0);
     border-radius: 10px;
@@ -67,12 +89,12 @@
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: darkgreen;
+    background-color: rgba(0,100,0,0.8);
     border-width: 4px;
     border-color: rgb(0,50,0);
     border-radius: 10px;
     border-style: solid;
-    margin-top: 10px;
+    margin-top: auto;
     margin-left:5%;
     margin-right: 5%;
     font-size: 20px;
@@ -83,7 +105,7 @@
     text-align: left;
     padding-left: 6%;
     padding-right: 6%;
-    background-color: darkgreen;
+    background-color: rgba(0,100,0,0.8);
     border-width: 4px;
     border-color: rgb(0,50,0);
     border-radius: 5px;
@@ -100,21 +122,32 @@
     margin-left:5%;
     margin-right: 5%;
     width:90%;
-}
-boxes2{
-  
+    display: inline-block;
 }
 
+.imagewrapper{
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 414px;
+}
 
 .image1{
-    padding-top: 10px;
+    border-width: 4px;
+    border-color: rgba(105, 79, 58, 0.87);
+    border-style:solid;
+    max-width: 600px;
+    border-radius: 10px;
     width: 90%;
-    height: auto;
     display: block;
-    margin: auto;
-    max-width: 414px; 
+    margin-left: ;
+    margin-right: 15%;
 }
 .image2{
+    border-width: 4px;
+    border-color: rgb(0,50,0);
+    border-style:solid;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -126,7 +159,7 @@ boxes2{
 
 @media screen and (min-width: 300px){
     .navigation a{
-        font-size: 20px;
+        font-size: 18px;
     }
     .navigation li{
         padding-top: 5px;
@@ -151,8 +184,11 @@ boxes2{
         font-size: 20px;
     }
     .header{
-        padding-top: 100px;
+        padding-top: 87px;
         font-size: 27px;
+    }
+    .footer p{
+        font-size: 10px;
     }
 }
 @media screen and (min-width:800px){
@@ -175,8 +211,11 @@ boxes2{
         margin-right:auto;
     }
     .header{
-        padding-top: 105px;
+        padding-top: 95px;
         font-size: 35px;
+    }
+    .footer p{
+        font-size: 20px;
     }
 }
 @media screen and (min-width:1080px){
@@ -195,9 +234,8 @@ boxes2{
     }
     .text2{
         float: left;
-        width: 300px;
-        font-size: 27px;
-       
+        width: 40%;
+        font-size: 27px;      
     }
     .list{
         max-width: 306px;
@@ -207,17 +245,27 @@ boxes2{
         margin-left: 0px;
     }
     .image1{
-        display: inline-block;
+        width: 384px;
+        float: left;
+        margin: 0px;
     }
     .boxes1{
-        background: black;
+        width: 1080px;
+        vertical-align: top;
         margin-left: auto;
         margin-right: auto;
-         display: inline-block;
+        display: block;
     }
 
     .header{
-        padding-top: 94px;
+        padding-top: 90px;
         font-size: 35px;
     } 
+    .footer{
+        margin-top: 600px;
+    }
+    .footer p{
+        font-size: 20px;
+    }
 }
+
