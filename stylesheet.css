@@ -45,10 +45,30 @@
 }
 
 .header {
+    transition: 1s;
+    background-image: url(assets/otsikko.jpg);
+    width: 100%;
+    border-width: 4px;
+    border-color: rgb(0,50,0);
+    border-style:solid;
     text-align: center;
-    padding-top: 70px;
+    margin-top: 67px;
 }
-.footer {
+#headerBackground{
+    transition: 1s;
+    position: static;
+    background-color: rgba(0,100,0,0.7);
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 80%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#headline{
+    width: 100%
+}
+.footer{
     display: block;
     float: none;
     max-width: 1080px;
@@ -67,63 +87,32 @@
     font-family: 'Montserrat',regular; 
 }
 
-.text1 {
+.text {
+    transition: 1s;
     max-width: 1080px;
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: rgba(0,100,0,0.8);
-    border-width: 4px;
-    border-color: rgb(0,50,0);
-    border-radius: 10px;
-    border-style: solid;
-    margin-top: 10px;
-    margin-left:5%;
-    margin-right: 5%;
-    font-size: 20px;
-    font-family: 'Montserrat',regular;
-}
-
-.text2 {
-    max-width: 1080px;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: rgba(0,100,0,0.8);
-    border-width: 4px;
-    border-color: rgb(0,50,0);
-    border-radius: 10px;
-    border-style: solid;
-    margin-top: auto;
-    margin-left:5%;
-    margin-right: 5%;
-    font-size: 20px;
-    font-family: 'Montserrat',regular;
-}
-.list{
-    max-width:400px;
-    text-align: left;
-    padding-left: 6%;
-    padding-right: 6%;
     background-color: rgba(0,100,0,0.8);
     border-width: 4px;
     border-color: rgb(0,50,0);
     border-radius: 5px;
     border-style: solid;
     margin-top: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
-    font-size:15px;
-    font-family: 'Montserrat',regular;
-}
-.boxes1{
-    max-width: 1125px; 
-    margin-top: 10px;
     margin-left:5%;
     margin-right: 5%;
-    width:90%;
-    display: inline-block;
+    font-size: 15px;
+    font-family: 'Montserrat',regular;
 }
+#pellet{
+    transition: 1s;
+    width: 80%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #574938;
+    border-radius: 5px;
+}
+
 
 .imagewrapper{
     width: 90%;
@@ -132,30 +121,15 @@
     margin-right: auto;
     max-width: 414px;
 }
-
-.image1{
-    border-width: 4px;
-    border-color: rgba(105, 79, 58, 0.87);
-    border-style:solid;
-    max-width: 600px;
-    border-radius: 10px;
-    width: 90%;
-    display: block;
-    margin-left: ;
-    margin-right: 15%;
+#index{
+    text-decoration: underline;
 }
-.image2{
-    border-width: 4px;
-    border-color: rgb(0,50,0);
-    border-style:solid;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1126px;
-    width: 100%;
+#media{
+    text-decoration: underline;
 }
-
-
+#contacts{
+    text-decoration: underline;
+}
 
 @media screen and (min-width: 300px){
     .navigation a{
@@ -174,21 +148,18 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .text1{
-       font-size: 30px; 
-    }
-    .text2{
+    .text{
        font-size: 25px; 
     }
     .list{
         font-size: 20px;
     }
     .header{
-        padding-top: 87px;
+        margin-top: 87px;
         font-size: 27px;
     }
-    .footer p{
-        font-size: 10px;
+    .footer{
+        font-size: 15px;
     }
 }
 @media screen and (min-width:800px){
@@ -199,22 +170,20 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .text1{
-       font-size: 45px; 
+    .text{
+       font-size: 35px; 
     }
-     .text2{
-       font-size: 40px; 
-    }
+    
     .list{
         font-size: 35px;
         margin-left: auto;
         margin-right:auto;
     }
     .header{
-        padding-top: 95px;
+        margin-top: 95px;
         font-size: 35px;
     }
-    .footer p{
+    .footer{
         font-size: 20px;
     }
 }
@@ -226,17 +195,13 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .text1{
+    .text{
         width: 1080px;
-        font-size: 27px;
+        font-size: 20px;
         margin-left: auto;
         margin-right:auto;
     }
-    .text2{
-        float: left;
-        width: 40%;
-        font-size: 27px;      
-    }
+   
     .list{
         max-width: 306px;
         font-size: 20px;
@@ -258,13 +223,20 @@
     }
 
     .header{
-        padding-top: 90px;
+        margin-top: 88px;
         font-size: 35px;
     } 
+    #headerBackground{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 640px
+    }
+    
+    #pellet{
+        width: 500px;
+    }
     .footer{
         margin-top: 600px;
-    }
-    .footer p{
         font-size: 20px;
     }
 }
