@@ -1,13 +1,15 @@
 @import 'normalize.css';
+@import url('https://fonts.googleapis.com/css?family=Acme');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .background {
-    background-color: rgba(0,100,0,0.5)
+    background-color: rgba(0,100,0,0.9)
 }
 .navigation {
     width: 100%;
     background-color: rgb(0, 100, 0);
     text-align:center;
-    position: fixed;
+    position:fixed;
     top: 0px;
     left: 0px;
     right:0px;
@@ -20,15 +22,21 @@
 
 .navigation li {
     display: inline-block; 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .navigation a {
+    transition: 1s;
     text-decoration: none;
     text-decoration-color: black;
-    color: black;
-    font-size: 15;
+    color: black; 
+    font-size: 15px;
+    font-family: 'Acme',regular;
     
+}
+.navigation a:hover{
+    transition: 1s;
+    color:rgb(117, 255, 117);
 }
 
 .header {
@@ -37,19 +45,23 @@
 }
 
 .text {
+    text-align: center;
     padding-left: 20px;
     padding-right: 20px;
     background-color: darkgreen;
     border-width: 4px;
     border-color: rgb(0,50,0);
-    border-radius: 20px;
+    border-radius: 10px;
     border-style: solid;
     margin-top: 10px;
     margin-left: 5%;
     margin-right: 5%;
-    font-size: 30px;
+    font-size: 20px;
+    font-family: 'Montserrat',regular;
 }
+
 .image1{
+    padding-top: 10px;
     display: block;
     margin: auto;
     width: 90%;
@@ -65,8 +77,8 @@
         font-size: 20px;
     }
     .navigation li{
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 }
 @media screen and (min-width:600px){
@@ -74,14 +86,14 @@
         font-size: 35px;
     }
     .navigation li{
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     .text{
-       font-size: 43px; 
+       font-size: 35px; 
     }
     .header{
-        padding-top: 107px;
+        padding-top: 100px;
         font-size: 27px;
     }
 }
@@ -90,14 +102,14 @@
         font-size: 40px;
     }
     .navigation li{
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     .text{
-       font-size: 53px; 
+       font-size: 50px; 
     }
     .header{
-        padding-top: 114px;
+        padding-top: 105px;
         font-size: 35px;
     }
 }
@@ -106,11 +118,11 @@
         font-size: 50px;
     }
     .navigation li{
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     .text{
-       font-size: 30px; 
+       font-size: 27px; 
     }
     .header{
         padding-top: 140px;
