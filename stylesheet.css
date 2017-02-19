@@ -46,6 +46,7 @@
 }
 
 .text {
+    max-width: 1080px;
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
@@ -55,16 +56,28 @@
     border-radius: 10px;
     border-style: solid;
     margin-top: 10px;
-    margin-left: 5%;
+    margin-left:5%;
     margin-right: 5%;
     font-size: 20px;
     font-family: 'Montserrat',regular;
 }
-
-.text li{
+.list{
+    max-width: 800px;
     text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: darkgreen;
+    border-width: 4px;
+    border-color: rgb(0,50,0);
+    border-radius: 5px;
+    border-style: solid;
+    margin-top: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
     font-size:15px;
+    font-family: 'Montserrat',regular;
 }
+
 
 .image1{
     padding-top: 10px;
@@ -75,6 +88,9 @@
 }
 .image2{
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1080px;
     width: 100%;
 }
 
@@ -98,7 +114,7 @@
     .text{
        font-size: 35px; 
     }
-    .text li{
+    .list{
         font-size: 25px;
     }
     .header{
@@ -117,30 +133,35 @@
     .text{
        font-size: 50px; 
     }
-    .text li{
+    .list{
         font-size: 40px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .header{
         padding-top: 105px;
         font-size: 35px;
     }
 }
-@media screen and(min-width:1080px){
+@media screen and (min-width:1080px){
    .navigation a{
-        font-size: 50px;
+        font-size: 30px;
     }
     .navigation li{
         padding-top: 10px;
         padding-bottom: 10px;
     }
     .text{
-       font-size: 27px; 
+        font-size: 27px;
+        margin-left: auto;
+        margin-right:auto;
     }
-    .text li{
+    .list{
+        max-width: 360px;
         font-size: 20px;
     }
     .header{
-        padding-top: 140px;
+        padding-top: 94px;
         font-size: 35px;
     } 
 }
