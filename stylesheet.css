@@ -68,22 +68,22 @@
 #headline{
     width: 100%
 }
+#coop{
+    margin: 5px;
+}
 .footer{
-    display: block;
-    float: none;
-    max-width: 1080px;
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
     background-color: rgba(0,100,0,0.8);
     border-width: 4px;
     border-color: rgb(0,50,0);
-    border-radius: 10px;
     border-style: solid;
+    border-radius: 5px;
     margin-top: 10px;
-    margin-left:5%;
+    margin-left: 5%;
     margin-right: 5%;
-    font-size: 20px;
+    font-size: 10px;
     font-family: 'Montserrat',regular; 
 }
 
@@ -113,14 +113,11 @@
     border-radius: 5px;
 }
 
-
-.imagewrapper{
-    width: 90%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 414px;
+#logo{
+    width: 100px;
 }
+
+
 #index{
     text-decoration: underline;
 }
@@ -138,6 +135,13 @@
     .navigation li{
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+    
+    .footer[
+        font-size: 15;
+    ]
+    #logo{
+        width: 150px;
     }
 }
 @media screen and (min-width:600px){
@@ -160,6 +164,9 @@
     }
     .footer{
         font-size: 15px;
+    }
+    #logo{
+        width: 150px;
     }
 }
 @media screen and (min-width:800px){
@@ -186,6 +193,9 @@
     .footer{
         font-size: 20px;
     }
+    #logo{
+        width: 200px;
+    }
 }
 @media screen and (min-width:1080px){
    .navigation a{
@@ -196,32 +206,12 @@
         padding-bottom: 10px;
     }
     .text{
-        width: 1080px;
+        width: 1000px;
         font-size: 20px;
         margin-left: auto;
         margin-right:auto;
     }
    
-    .list{
-        max-width: 306px;
-        font-size: 20px;
-        padding-left: 30px;
-        padding-right: 30px;
-        margin-left: 0px;
-    }
-    .image1{
-        width: 384px;
-        float: left;
-        margin: 0px;
-    }
-    .boxes1{
-        width: 1080px;
-        vertical-align: top;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
-
     .header{
         margin-top: 88px;
         font-size: 35px;
@@ -236,8 +226,10 @@
         width: 500px;
     }
     .footer{
-        margin-top: 600px;
         font-size: 20px;
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
