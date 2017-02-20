@@ -112,8 +112,7 @@
     max-width: 600px;
     height: auto;
     margin-left: auto;
-    margin-right: auto;
-    
+    margin-right: auto;  
 }
 .videoContainer iframe{
     width: 100%;
@@ -242,7 +241,7 @@
         width: 200px;
     }
 }
-@media screen and (min-device-width:1080px){
+@media screen and (min-width:1080px){
    .navigation a{
         font-size: 20px;
     }
@@ -263,13 +262,16 @@
     }
    
     .header{
+        width: 100%;
         margin-top: 69px;
         font-size: 35px;
     } 
     #headerBackground{
         margin-top: 30px;
         margin-bottom: 30px;
-        width: 640px
+        width: 640px;
+        margin-left: auto;
+        margin-right: auto
     }
     
     #image{
@@ -280,6 +282,9 @@
         width: 817px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 10px;
+        clear: both;
     }
+    
 }
 
