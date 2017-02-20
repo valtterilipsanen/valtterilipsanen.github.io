@@ -4,7 +4,7 @@
 
 .background {
     background-image: url(assets/tausta.jpg);
-    background-color: rgba(0,100,0,0.85);
+    background-color: rgb(56, 57, 26);
 }
 .navigation {
     width: 100%;
@@ -35,7 +35,7 @@
     text-decoration: none;
     text-decoration-color: black;
     color: black; 
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Acme',regular;
     transition:1s;
     
@@ -52,7 +52,7 @@
     border-color: rgb(0,50,0);
     border-style:solid;
     text-align: center;
-    margin-top: 67px;
+    margin-top: 64px;
 }
 #headerBackground{
     transition: 1s;
@@ -65,12 +65,22 @@
     margin-left: auto;
     margin-right: auto;
 }
+#footerNotes{
+    margin-top: 0px;
+}
+.footerInfo{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 #headline{
     width: 100%
 }
 #coop{
     margin: 5px;
+    text-decoration: underline;
 }
+
 .footer{
     text-align: center;
     padding-left: 20px;
@@ -86,6 +96,17 @@
     font-size: 10px;
     font-family: 'Montserrat',regular; 
 }
+.videoContainer{
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.videoContainer iframe{
+    width: 100%;
+}
 
 .text {
     transition: 1s;
@@ -93,6 +114,7 @@
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 10px;
     background-color: rgba(0,100,0,0.8);
     border-width: 4px;
     border-color: rgb(0,50,0);
@@ -116,7 +138,12 @@
 #logo{
     width: 100px;
 }
-
+#poster{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 414px;
+}
 
 #index{
     text-decoration: underline;
@@ -127,8 +154,10 @@
 #contacts{
     text-decoration: underline;
 }
-
-@media screen and (min-width: 300px){
+#info{
+    text-decoration: underline;
+}
+@media screen and (min-width: 400px){
     .navigation a{
         font-size: 18px;
     }
@@ -142,6 +171,9 @@
     ]
     #logo{
         width: 150px;
+    }
+    .videoContainer{
+        height: 400px;
     }
 }
 @media screen and (min-width:600px){
@@ -178,7 +210,7 @@
         padding-bottom: 10px;
     }
     .text{
-       font-size: 35px; 
+       font-size: 32px; 
     }
     
     .list{
@@ -207,7 +239,7 @@
     }
     .text{
         width: 1000px;
-        font-size: 20px;
+        font-size: 15px;
         margin-left: auto;
         margin-right:auto;
     }
@@ -226,7 +258,7 @@
         width: 500px;
     }
     .footer{
-        font-size: 20px;
+        font-size: 15px;
         width: 1000px;
         margin-left: auto;
         margin-right: auto;
