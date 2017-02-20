@@ -126,6 +126,10 @@
     font-size: 15px;
     font-family: 'Montserrat',regular;
 }
+.text article{
+ padding-bottom: 10px;
+    padding-top: 10px;
+}
 #pellet{
     transition: 1s;
     width: 80%;
@@ -172,9 +176,7 @@
     #logo{
         width: 150px;
     }
-    .videoContainer{
-        height: 400px;
-    }
+
 }
 @media screen and (min-width:600px){
     .navigation a{
