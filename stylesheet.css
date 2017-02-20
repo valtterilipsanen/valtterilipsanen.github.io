@@ -114,6 +114,7 @@
     margin-right: auto;  
 }
 .videoContainer iframe{
+    border-width: 0px;
     width: 100%;
     height: auto;
 }
@@ -179,9 +180,9 @@
         padding-bottom: 5px;
     }
     
-    .footer[
+    .footer{
         font-size: 15px;
-    ]
+    }
     #logo{
         width: 150px;
     }
