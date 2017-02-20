@@ -76,9 +76,20 @@
 #headline{
     width: 100%
 }
+.margins{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.links a{
+    color: #d3c309;
+}
+.links a:hover{
+    color: chartreuse;
+}
 #coop{
     margin: 5px;
     text-decoration: underline;
+    font-family: 'Acme',regular;
 }
 
 .footer{
@@ -112,8 +123,8 @@
     transition: 1s;
     max-width: 1080px;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 10px;
     background-color: rgba(0,100,0,0.8);
     border-width: 4px;
@@ -130,7 +141,7 @@
  padding-bottom: 10px;
     padding-top: 10px;
 }
-#pellet{
+#image{
     transition: 1s;
     width: 80%;
     border-width: 4px;
@@ -231,23 +242,28 @@
         width: 200px;
     }
 }
-@media screen and (min-width:1080px){
+@media screen and (min-device-width:1080px){
    .navigation a{
-        font-size: 30px;
+        font-size: 20px;
     }
     .navigation li{
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
     .text{
-        width: 1000px;
+        width: 800px;
         font-size: 15px;
         margin-left: auto;
         margin-right:auto;
     }
+    .margins{
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+    }
    
     .header{
-        margin-top: 88px;
+        margin-top: 69px;
         font-size: 35px;
     } 
     #headerBackground{
@@ -256,12 +272,12 @@
         width: 640px
     }
     
-    #pellet{
+    #image{
         width: 500px;
     }
     .footer{
         font-size: 15px;
-        width: 1000px;
+        width: 817px;
         margin-left: auto;
         margin-right: auto;
     }
