@@ -17,7 +17,6 @@
     border-width: 4px;
     border-color: rgb(0,50,0);
     border-style:solid;
-    box-shadow: 10px;
     z-index: 9999;
 }
 .navigation ul{
@@ -116,10 +115,10 @@
 }
 .videoContainer iframe{
     width: 100%;
+    height: auto;
 }
 
 .text {
-    transition: 1s;
     max-width: 1080px;
     text-align: center;
     padding-left: 30px;
@@ -181,7 +180,7 @@
     }
     
     .footer[
-        font-size: 15;
+        font-size: 15px;
     ]
     #logo{
         width: 150px;
@@ -211,6 +210,12 @@
     }
     #logo{
         width: 150px;
+    }
+    .videoContainer{
+        height: 350px;
+    }
+    .videoContainer iframe{
+        height: 350px;
     }
 }
 @media screen and (min-width:800px){
