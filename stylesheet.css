@@ -149,6 +149,28 @@
     border-radius: 5px;
 }
 
+#slideshow{
+    font-family: 'Acme',regular;
+    color: #d3c309;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #574938;
+    border-radius: 5px;
+}
+.slide0{
+    background-image: url(assets/metsa2.jpg);
+}
+.slide1{
+    background-image: url(assets/metsa3.jpg);
+}
+
+.slide2{
+    background-image: url(assets/metsa1.jpg);
+}
+
 #logo{
     width: 100px;
 }
