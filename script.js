@@ -13,7 +13,6 @@ function getRandomInteger( min, max ){
 
 function setNumber(number){
     randomNumber = number
-    console.log(randomNumber.toString())
 }
 
 function compareNumber( first, second ){
@@ -37,9 +36,7 @@ function guessTheNumber(){
  
 
 window.onload = function(){
-    setNumber(getRandomInteger(minimum, maximum))
-    console.log(document.getElementById("number"))
-    console.log(Number.isInteger(document.getElementById("number")))
+    setNumber(getRandomInteger(minimum, maximum))  
 }
 
 
