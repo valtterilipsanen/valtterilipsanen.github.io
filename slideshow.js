@@ -1,7 +1,5 @@
 var jsonData = null;
 var currentSlide = 0;
-var play = true;
-
 
 window.onload = function(){
     $.getJSON("https://lipsanv1.firebaseio.com/.json", function(data){
@@ -12,6 +10,8 @@ window.onload = function(){
         $('#slideText').html(data.articles[0].text);  
     })
 }
+
+var play = window.setInterval(function(){nextSlide()},6000);
 
 function nextSlide(){ 
     currentSlide = (currentSlide + 1) % 3;
@@ -68,6 +68,16 @@ function previousSlide(){
     document.getElementById("slideshow").className = img;
 }
 
-window.setInterval(function(){if(play)nextSlide()},6000);
+function togglePlay(){
+  if(document.getElementById("playButton").innerHTML == "Pysäytä") {
+      clearInterval(play);
+      document.getElementById("playButton").innerHTML = "Käynnistä";
+  } else {
+      play = window.setInterval(function(){nextSlide()},6000); 
+      document.getElementById("playButton").innerHTML = "Pysäytä";
+  }
+}
+
+
 
 
