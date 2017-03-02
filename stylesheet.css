@@ -91,6 +91,17 @@
     font-family: 'Acme',regular;
 }
 
+.buttons{
+    border-radius: 5px;
+    background-color: #50500b;
+    border-color: rgb(0,50,0);
+    display: inline-block;
+    font-family: 'Acme',regular;
+}
+
+.buttons:hover{
+    background-color: #6c6c0d;
+}
 
 .footer{
     text-align: center;
@@ -161,15 +172,8 @@
     border-color: #574938;
     border-radius: 5px;
 }
-.slide0{
-    background-image: url(assets/metsa2.jpg);
-}
-.slide1{
-    background-image: url(assets/metsa3.jpg);
-}
-
-.slide2{
-    background-image: url(assets/metsa1.jpg);
+#slideshow {
+    background-size: cover;
 }
 
 #logo{

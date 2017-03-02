@@ -1,71 +1,42 @@
 var jsonData = null;
-var currentSlide = 0;
+if (localStorage.currentSlide) {
+    localStorage.currentSlide = Number(localStorage.currentSlide);
+} else {
+    localStorage.currentSlide = 0;
+}
 
 window.onload = function(){
     $.getJSON("https://lipsanv1.firebaseio.com/.json", function(data){
         console.log(data);
         jsonData = data;
-        $('#slideDate').html(data.articles[0].date);
-        $('#slideHeader').html(data.articles[0].title);
-        $('#slideText').html(data.articles[0].text);  
+        $('#slideDate').html(data.articles[localStorage.currentSlide].date);
+        $('#slideHeader').html(data.articles[localStorage.currentSlide].title);
+        $('#slideText').html(data.articles[localStorage.currentSlide].text);
+        document.getElementById("slideshow").style.backgroundImage = jsonData.articles[localStorage.currentSlide].image;
     })
 }
 
 var play = window.setInterval(function(){nextSlide()},6000);
 
 function nextSlide(){ 
-    currentSlide = (currentSlide + 1) % 3;
-    $('#slideDate').html(jsonData.articles[currentSlide].date);
-    $('#slideHeader').html(jsonData.articles[currentSlide].title);
-    $('#slideText').html(jsonData.articles[currentSlide].text);
-    var img = null;
-    switch(currentSlide){
-      case 0 :
-        img = "slide0";
-        break;
-        
-        case 1 :
-        img = "slide1";
-        break;
-        
-        case 2 : 
-        img = "slide2";
-        break; 
-        
-        default:
-        break;
-    }
-    document.getElementById("slideshow").className = img;
-       
+    localStorage.currentSlide = (localStorage.currentSlide + 1) % 3;
+    $('#slideDate').html(jsonData.articles[localStorage.currentSlide].date);
+    $('#slideHeader').html(jsonData.articles[localStorage.currentSlide].title);
+    $('#slideText').html(jsonData.articles[localStorage.currentSlide].text);
+    document.getElementById("slideshow").style.backgroundImage = jsonData.articles[localStorage.currentSlide].image;
+    console.log(jsonData.articles[localStorage.currentSlide].image)
 }
 
 function previousSlide(){
-    if(currentSlide === 0){
-        currentSlide = 2;
+    if(localStorage.currentSlide == 0){
+        localStorage.currentSlide = 2;
     } else {
-      currentSlide = currentSlide - 1 ;
+      localStorage.currentSlide = localStorage.currentSlide - 1 ;
     }
-    $('#slideDate').html(jsonData.articles[currentSlide].date);
-    $('#slideHeader').html(jsonData.articles[currentSlide].title);
-    $('#slideText').html(jsonData.articles[currentSlide].text);         
-    var img = null;
-    switch(currentSlide){
-      case 0 :
-        img = "slide0";
-        break;
-        
-        case 1 :
-        img = "slide1";
-        break;
-        
-        case 2 : 
-        img = "slide2";
-        break; 
-        
-        default:
-        break;
-    }
-    document.getElementById("slideshow").className = img;
+    $('#slideDate').html(jsonData.articles[localStorage.currentSlide].date);
+    $('#slideHeader').html(jsonData.articles[localStorage.currentSlide].title);
+    $('#slideText').html(jsonData.articles[localStorage.currentSlide].text);  
+    document.getElementById("slideshow").style.backgroundImage = jsonData.articles[localStorage.currentSlide].image;
 }
 
 function togglePlay(){
