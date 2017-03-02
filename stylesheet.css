@@ -97,6 +97,10 @@
     border-color: rgb(0,50,0);
     display: inline-block;
     font-family: 'Acme',regular;
+    outline: none !important;
+}
+.buttons:focus{
+    outline: none !important;
 }
 
 .buttons:hover{
@@ -131,6 +135,9 @@
     height: auto;
 }
 
+#cover{
+    min-height: 300px;
+}
 .text {
     max-width: 1080px;
     text-align: center;
@@ -213,6 +220,9 @@
     #logo{
         width: 150px;
     }
+    #cover{
+        min-height: 250px;
+    }
 
 }
 @media screen and (min-width:600px){
@@ -245,6 +255,10 @@
     .videoContainer iframe{
         height: 350px;
     }
+    
+    #cover{
+        min-height: 390px;
+    }
 }
 @media screen and (min-width:800px){
     .navigation a{
@@ -272,6 +286,9 @@
     }
     #logo{
         width: 200px;
+    }
+    #cover{
+        min-height: 500px;
     }
 }
 @media screen and (min-width:1080px){
@@ -317,6 +334,9 @@
         margin-right: auto;
         margin-top: 10px;
         clear: both;
+    }
+    #cover{
+        min-height: 200px;
     }
     
 }
