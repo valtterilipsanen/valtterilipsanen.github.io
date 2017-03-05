@@ -9,6 +9,9 @@ window.onload = function(){
     $.getJSON("https://lipsanv1.firebaseio.com/.json", function(data){
         console.log(data);
         jsonData = data;
+        document.getElementById("slideshow").style.backgroundImage = jsonData.articles[0].image;
+        document.getElementById("slideshow").style.backgroundImage = jsonData.articles[1].image;
+        document.getElementById("slideshow").style.backgroundImage = jsonData.articles[2].image;
         $("#slideshow").slideUp(400, function(){
             $('#slideDate').html(data.articles[localStorage.currentSlide].date);
             $('#slideHeader').html(data.articles[localStorage.currentSlide].title);
