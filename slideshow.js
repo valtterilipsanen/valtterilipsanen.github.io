@@ -22,7 +22,9 @@ window.onload = function(){
     });
 };
 
-var play = window.setInterval(function(){nextSlide()},6000);
+var play = window.setInterval(function(){
+    nextSlide();
+},6000);
 
 
 
@@ -58,7 +60,9 @@ function togglePlay(){
       clearInterval(play);
       document.getElementById("playButton").innerHTML = "Käynnistä";
   } else {
-      play = window.setInterval(function(){nextSlide()},6000); 
+      play = window.setInterval(function(){
+          nextSlide();
+      },6000); 
       document.getElementById("playButton").innerHTML = "Pysäytä";
   }
 }
