@@ -43,6 +43,10 @@
     color:rgb(117, 255, 117);
 }
 
+.can {
+    margin-left: 10px;
+    margin-top: 10px;
+}
 .header {
     transition: 1s;
     background-image: url(assets/otsikko.jpg);

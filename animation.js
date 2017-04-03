@@ -2,8 +2,8 @@
 
 
 $(document).ready(function() {
-  var width = window.innerWidth - 20;
-  var height = window.innerHeight - 20;
+  var width = window.innerWidth - 25;
+  var height = window.innerHeight - 25;
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext("2d");
   canvas.width = width;

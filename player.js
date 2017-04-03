@@ -7,12 +7,12 @@ function player(x,y,w,h,speed) {
 }
 
 
-var width = window.innerWidth - 20;
-var height = window.innerHeight - 20;
+var width = window.innerWidth - 25;
+var height = window.innerHeight - 25;
     
 /* Player */
 
-var p = new player(200,200,40,40,10); 
+var p = new player(width / 2,height / 2,40,40,4); 
 
 function drawPlayer(context) {
   var x = p.x - (p.w / 2);
@@ -20,6 +20,16 @@ function drawPlayer(context) {
   context.fillStyle = '#FF0000';
   context.fillRect(x,y, p.w, p.h);
 }
+
+function x(){
+    p.x;
+}
+function y() {
+    p.y;
+}
+
+
+
 
 function movePlayer(dir) {
   switch (dir) {
@@ -29,7 +39,6 @@ function movePlayer(dir) {
         p.x = (p.w / 2);
           
       }
-      console.log("toi");
       break;
     case "right":
       p.x += p.speed;
