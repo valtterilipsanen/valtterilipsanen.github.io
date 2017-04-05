@@ -1,8 +1,8 @@
-function player(x,y,w,h,speed) {
+
+function player(x,y,r,speed) {
  this.x = x;
  this.y = y;
- this.w = w;
- this.h = h;
+ this.r = r;
  this.speed = speed;
 }
 
@@ -12,13 +12,16 @@ var height = window.innerHeight - 25;
     
 /* Player */
 
-var p = new player(width / 2,height / 2,40,40,4); 
+var p = new player(width / 2,height / 2,20,4); 
 
 function drawPlayer(context) {
-  var x = p.x - (p.w / 2);
-  var y = p.y - (p.h / 2);
+  var x = p.x;
+  var y = p.y;
+  context.beginPath();
   context.fillStyle = '#FF0000';
-  context.fillRect(x,y, p.w, p.h);
+  context.arc(x,y,p.r,0,2*Math.PI);
+  context.fill();
+  context.closePath();
 }
 
 function x(){
@@ -32,34 +35,44 @@ function y() {
 
 
 function movePlayer(dir) {
+    var oldX = p.x;
+    var oldY = p.y;
   switch (dir) {
     case "left": 
       p.x -= p.speed;
-      if (p.x < (p.w / 2)) {
-        p.x = (p.w / 2);
+      if (p.x < p.r) {
+        p.x = p.r;
           
       }
       break;
     case "right":
       p.x += p.speed;
-      if (p.x > width - (p.w / 2)) {
-        p.x = width - (p.w / 2);
+      if (p.x > width - p.r) {
+        p.x = width - p.r;
       }
       break;
     case "up":
       p.y -= p.speed;
-      if (p.y < (p.w / 2)) {
-        p.y = (p.w / 2);
+      if (p.y < p.r) {
+        p.y = p.r;
       }
       break;
     case "down":
       p.y += p.speed;
-      if (p.y > height - (p.w / 2)) {
-        p.y = height - (p.w / 2);
+      if (p.y > height - p.r) {
+        p.y = height - p.r;
       }
       break;
   }
-}
+    for(k = 0; k < enemies.length; k++){
+        var distance = Math.sqrt(Math.pow((p.x - enemies[k].x),2) + Math.pow((p.y - enemies[k].y),2))
+        if(distance < p.r + enemies[k].r){
+            p.x = oldX;
+            p.y = oldY;
+        }
+    }
+  }
+
 
 function changeSpeed(am) {
     p.speed = am;
