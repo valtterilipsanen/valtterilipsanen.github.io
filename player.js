@@ -24,12 +24,6 @@ function drawPlayer(context) {
   context.closePath();
 }
 
-function x(){
-    p.x;
-}
-function y() {
-    p.y;
-}
 
 
 

@@ -15,17 +15,16 @@ function direction(ang){
 var width = window.innerWidth - 25;
 var height = window.innerHeight - 25;
 var eSize = 20;
-var eSpeed = 5;
+var eSpeed = 1;
     
 
 var dirs = ["N","NE","E","SE","S","SW","W","NW"]
-var enemies = [new enemy(300,300,eSize,eSpeed,new direction(3.5)), new enemy(600,300,eSize,eSpeed,new direction(2)),new enemy(600,100,eSize,eSpeed,new direction(6)),new enemy(100,300,eSize,eSpeed,new direction(5)) ]; 
+var enemies = []; 
 
 function drawEnemies(context) {
+ console.log(enemies.length)
   for(i = 0; i < enemies.length; i++){
-  var e = enemies[i]
-  var x = e.x - e.r;
-  var y = e.y - e.r;
+  var e = enemies[i];
   
   context.beginPath();
   context.fillStyle = '#ffff00';
@@ -39,7 +38,6 @@ function drawEnemies(context) {
 
 
 function moveEnemies() {
-    console.log(enemies[1].dir.ang)
      for(i = 0; i < enemies.length; i++){
          var e = enemies[i];
          var oldX = e.x;
@@ -66,12 +64,29 @@ function moveEnemies() {
          }
          
          for(k = 0; k < enemies.length; k++){
-            var distance = Math.sqrt(Math.pow((e.x-enemies[k].x),2) + Math.pow((e.y - enemies[k].y),2))
+            var distance = Math.sqrt(Math.pow((e.x-enemies[k].x),2) + Math.pow((e.y - enemies[k].y),2));
              if (!(e.x == enemies[k].x && e.y == enemies[k].y)){
                  
                   if(distance < 2 * e.r){
                  e.x = oldX;
                  e.y = oldY;
+                 var angle = 0;
+                 var en = enemies[k];
+                      
+                 if(e.x >= en.x && e.y <= en.y){
+                     angle = Math.atan((e.y - en.y)/(e.x - en.x));      
+                 } else if(e.x <= en.x && e.y <= en.y){
+                     angle = Math.atan((e.y - en.y)/(e.x - en.x)) + Math.PI;
+                 } else if(e.x >= en.x && e.y >= en.y){
+                     angle = Math.atan((e.y - en.y)/(e.x - en.x));
+                 } else if(e.x <= en.x && e.y >= en.y){
+                     angle = Math.atan((e.y - en.y)/(e.x - en.x)) + Math.PI;
+                 }
+             
+             e.dir = new direction(angle);
+             en.dir = new direction(angle + Math.PI)
+                      
+                      
              }
            }
          }
@@ -81,14 +96,14 @@ function moveEnemies() {
              e.y = oldY;
              var angle = 0;
              
-                 if(p.x > e.x && p.y > e.y){
-                     angle = Math.atan((e.y - p.y)/(e.x - p.y)) - (Math.PI / 2);      
-                 }else if(p.x < e.x && p.y > e.y){
-                     angle = Math.atan((e.y - p.y)/(p.x - e.y));
-                 }else if(p.x < e.x && p.y < e.y){
-                     angle = Math.atan((p.y - e.y)/(p.x - e.y)) + (Math.PI / 2)
-                 }else{
-                     angle = Math.atan(Math.abs((p.y - e.y))/Math.abs((e.x - p.y))) + (Math.PI / 2);
+                 if(e.x >= p.x && e.y <= p.y){
+                     angle = Math.atan((e.y - p.y)/(e.x - p.x));      
+                 } else if(e.x <= p.x && e.y <= p.y){
+                     angle = Math.atan((e.y - p.y)/(e.x - p.x)) + Math.PI;
+                 } else if(e.x >= p.x && e.y >= p.y){
+                     angle = Math.atan((e.y - p.y)/(e.x - p.x));
+                 } else if(e.x <= p.x && e.y >= p.y){
+                     angle = Math.atan((e.y - p.y)/(e.x - p.x)) + Math.PI;
                  }
              
              e.dir = new direction(angle)
@@ -97,33 +112,78 @@ function moveEnemies() {
      }
 }
 
-
-/**
-function collide(e){
-   for(a = 0; a < enemies.length; a++){
-        if(e != enemies[a] && (enemies[a].x + eSize) > e.x && (enemies[a].x - eSize) < e.x) {
-         
-            if((enemies[a].y + eSize) > e.y && (enemies[a].y - eSize) < e.y){
-            
-            changeDirection(e);
-            changeDirection(enemies[a]);
-            }
-        }
-       
-       }
-       
-      if(e.x - (eSize / 2) < p.x + (p.w / 2) && e.x + (eSize/2) > p.x - (p.w / 2) && e.y - (eSize / 2) < p.y + (p.h / 2) && e.y + (eSize/2) > p.y - (p.h / 2)){
-           changeDirection(e);
-      }
-    
-  }
-
-
-
-
 function changeSpeed(e,am) {
+    eSpeed = am;
     e.speed = am;
 }
+
+function getRandomInteger( min, max ){
+    var difference = max - min;
+    
+    var number = parseInt(Math.round(Math.random() * difference + min));
+    return number;
+}
+
+var canAdd = true;
+
+
+function addEnemy() {
+    
+    
+    if(canAdd){
+    var newX = 0;
+    var newY = 0;
+    var counter = 0;
+    
+    var flag = false;
+    while(flag === false && counter < 1000){
+        newX = getRandomInteger(eSize, width - eSize);
+        newY = getRandomInteger(eSize, height - eSize);
+      
+        flag = true;
+        for(k = 0; k < enemies.length; k++){
+            var distance = Math.sqrt(Math.pow((newX - enemies[k].x),2) + Math.pow((newY - enemies[k].y),2));
+                if(distance < 2 * eSize){
+                    flag = false;
+                }  
+        }
+        var distance = Math.sqrt(Math.pow((newX - p.x),2) + Math.pow((newY - p.y),2));
+        if(distance < eSize + p.r){
+            flag = false;
+        }
+        counter = counter + 1;
+        
+        if(counter >= 1000) canAdd = false;
+        
+    }
+    if(counter < 1000){
+        
+      
+    var dir = (parseFloat(getRandomInteger(0,360)) / 360) * 2* Math.PI;
+    
+    enemies.push(new enemy(newX, newY, eSize, eSpeed, new direction(dir)));
+    
+    }
+}
+}
+
+function removeEnemy(clickX, clickY) {
+     for(k = 0; k < enemies.length; k++){
+        var distance = Math.sqrt(Math.pow((clickX - enemies[k].x),2) + Math.pow((clickY - enemies[k].y),2));
+            if(distance < eSize){
+                enemies.splice(k,1);
+                canAdd = true;
+                }  
+     }
+}
+
+/**
+
+
+
+
+
+
 
 var canAdd = true;
 function addEnemy() {

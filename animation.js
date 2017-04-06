@@ -9,7 +9,11 @@ $(document).ready(function() {
   canvas.width = width;
   canvas.height = height;
   document.body.appendChild(canvas);
-
+  addEnemy();
+  addEnemy();
+  addEnemy();
+  addEnemy();
+  addEnemy();
 
 
 
@@ -18,6 +22,15 @@ $(document).ready(function() {
 /* Listen to keyboard events */
   var keysDown = {};
   
+    
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+}
+    
   window.addEventListener("keydown", function(e) {
      keysDown[e.keyCode] = true;
   }, false);
@@ -31,7 +44,11 @@ $(document).ready(function() {
           e.preventDefault();
       };
   });
-  
+  canvas.addEventListener("mousedown", function(e){
+     removeEnemy(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
+     console.log("MOUSEX" + e.pageX)
+      console.log("MOUSEy" + e.pageY)
+  })
   
   
 /* Draw everything */
@@ -45,6 +62,7 @@ var render = function() {
 /* Update stuff every loop */
 var update = function(delta) {
     if (38 in keysDown) {
+        addEnemy();
        movePlayer("up");
     } 
     if (40 in keysDown) {
