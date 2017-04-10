@@ -17,7 +17,7 @@ var height = Math.min(window.innerHeight - 25, 1276);
 /* Player */
 var plMod = -27;
 
-var p = new player(width / 2,height / 2,69,4, 'E', 0, 0); 
+var p = new player(width / 2,height / 2,69,4, 'SE', 0, 0); 
 
 function row(){
     switch (p.dir){
@@ -36,7 +36,66 @@ function row(){
       }
 }
 
-function sprite (options) {			
+var pImgEReady = false;
+var pImgE = new Image();
+pImgE.onload = function () {
+    pImgEReady = true;
+};
+pImgE.src = "assets/Standing/east.png";
+
+var pImgNEReady = false;
+var pImgNE = new Image();
+pImgNE.onload = function () {
+    pImgNEReady = true;
+};
+pImgNE.src = "assets/Standing/northeast.png";
+
+
+var pImgNReady = false;
+var pImgN = new Image();
+pImgN.onload = function () {
+    pImgNReady = true;
+};
+pImgN.src = "assets/Standing/north.png";
+
+var pImgNWReady = false;
+var pImgNW = new Image();
+pImgNW.onload = function () {
+    pImgNWReady = true;
+};
+pImgNW.src = "assets/Standing/northwest.png";
+
+var pImgWReady = false;
+var pImgW = new Image();
+pImgW.onload = function () {
+    pImgWReady = true;
+};
+pImgW.src = "assets/Standing/west.png";
+
+var pImgSWReady = false;
+var pImgSW = new Image();
+pImgSW.onload = function () {
+    pImgSWReady = true;
+};
+pImgSW.src = "assets/Standing/southwest.png";
+
+
+var pImgSReady = false;
+var pImgS = new Image();
+pImgS.onload = function () {
+    pImgSReady = true;
+};
+pImgS.src = "assets/Standing/south.png";
+
+var pImgSEReady = false;
+var pImgSE = new Image();
+pImgSE.onload = function () {
+    pImgSEReady = true;
+};
+pImgSE.src = "assets/Standing/southeast.png";
+
+
+function spriteP (options) {			
     var that = {};  
     frameIndex = p.frame,
     rowIndex = row(),
@@ -54,22 +113,36 @@ function sprite (options) {
     
       
     that.update = function (k) {
-                if(38 in k){
-                    rowIndex = 1;
-                }
-                if(39 in k){
-                    rowIndex = 0; 
-                }
-                if(40 in k){
-                    rowIndex = 4;
-                }
-                if(37 in k){
-                    rowIndex = 7;
-                }
+            
+            if(38 in k && 39 in k){
+              rowIndex = 2;
+              p.dir = 'NE';
+            }else if(39 in k && 40 in k){
+                rowIndex = 5;
+                p.dir = 'SE';
+            }else if(37 in k && 38 in k){
+                rowIndex = 3;
+                p.dir = 'NW';
+            }else if(37 in k && 40 in k){
+                rowIndex = 6;
+                p.dir = 'SW';
+            }else if(38 in k){
+                rowIndex = 1;
+                p.dir = 'N';
+            }else if(39 in k){
+                rowIndex = 0;
+                p.dir = 'E';
+            }else if(40 in k){
+                rowIndex = 4;
+                p.dir = 'S';
+            }else if(37 in k){
+                rowIndex = 7;
+                p.dir = 'W';
+            }
         
         
         p.ticks += 1;
-        console.log(frameIndex)
+        
 			
         if (tickCount > ticksPerFrame) {
         
@@ -115,7 +188,7 @@ function drawPlayer(ctx, keys) {
   };
   plImage.src = "assets/plWalk.png";
     
-  var pl = sprite({
+  var pl = spriteP({
     context: ctx,
     width: 1104,
     height: 1104,
@@ -126,8 +199,37 @@ function drawPlayer(ctx, keys) {
     
     
 });
-pl.update(keys); 
-pl.render();
+if(37 in keys ||38 in keys ||39 in keys ||40 in keys){
+    pl.update(keys); 
+    pl.render();
+ }else{
+     switch(p.dir){
+         case 'E': 
+            if(pImgEReady){ctx.drawImage(pImgE, p.x- p.r, p.y - p.r) };
+             break;
+         case 'NE':
+             if(pImgNEReady){ctx.drawImage(pImgNE, p.x- p.r, p.y - p.r) };
+             break;
+         case 'N':
+             if(pImgNReady){ctx.drawImage(pImgN, p.x- p.r, p.y - p.r) };
+             break;
+         case 'NW':
+             if(pImgNWReady){ctx.drawImage(pImgNW, p.x- p.r, p.y - p.r) };
+             break;
+         case 'W':
+             if(pImgWReady){ctx.drawImage(pImgW, p.x- p.r, p.y - p.r) };
+             break;
+         case 'SW':
+             if(pImgSWReady){ctx.drawImage(pImgSW, p.x- p.r, p.y - p.r) };
+             break;
+         case 'S':
+             if(pImgSReady){ctx.drawImage(pImgS, p.x- p.r, p.y - p.r) };
+             break;
+         case 'SE':
+             if(pImgSEReady){ctx.drawImage(pImgSE, p.x- p.r, p.y - p.r) };
+             break;
+     }
+ }
 }
 
  

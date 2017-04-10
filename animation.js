@@ -69,7 +69,7 @@ var render = function() {
 /* Update stuff every loop */
 var update = function(delta) {
     if (38 in keysDown) {
-        
+       addEnemy()
        movePlayer("up");
     } 
     if (40 in keysDown) {
