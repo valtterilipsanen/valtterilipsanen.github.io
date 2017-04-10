@@ -9,15 +9,17 @@ function player(x,y,r,speed,dir,frame,ticks) {
  this.ticks = ticks;
  
 }
-
+var pSpeed = 3;
+var windowWidth = Math.max(window.innerWidth - 25, 1150);
+var windowHeight = window.innerHeight - 25;
 
 var width = Math.min(window.innerWidth - 25, 1920);
-var height = Math.min(window.innerHeight - 25, 1276);
+var height = Math.min(window.innerHeight - 25, 1276) - 100;
     
 /* Player */
-var plMod = -27;
+var plMod = -30;
 
-var p = new player(width / 2,height / 2,69,4, 'SE', 0, 0); 
+var p = new player(width / 2,height / 2,69,pSpeed, 'SE', 0, 0); 
 
 function row(){
     switch (p.dir){
@@ -100,7 +102,7 @@ function spriteP (options) {
     frameIndex = p.frame,
     rowIndex = row(),
     tickCount = p.ticks,
-    ticksPerFrame = 5,
+    ticksPerFrame = 15 / pSpeed,
     numberOfFrames = options.numberOfFrames || 1,
     
 					
@@ -290,13 +292,13 @@ function movePlayer(dir) {
   }
 
 
-function changeSpeed(am) {
-    p.speed = am;
+function pChangeSpeed(am) {
+    p.speed += am;
 }
 
-function reset() {
-    p.x = 200;
-    p.y = 200;
-    p.speed = 10;
+function pReset() {
+    p.x = width / 2;
+    p.y = height / 2;
+    p.speed = 3;
 }
 

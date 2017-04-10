@@ -17,7 +17,7 @@ function direction(ang){
 
 var eMod = -5
 var eSize = 20;
-var eSpeed = 10;
+var eSpeed = 2;
     
 
 
@@ -184,9 +184,9 @@ function moveEnemies() {
      }
 }
 
-function changeSpeed(e,am) {
-    eSpeed = am;
-    e.speed = am;
+function eChangeSpeed(e,am) {
+    eSpeed += am;
+    e.speed += am;
 }
 
 function getRandomInteger( min, max ){
@@ -247,6 +247,19 @@ function removeEnemy(clickX, clickY) {
                 canAdd = true;
                 }  
      }
+}
+
+
+function eReset() {
+    eSpeed = 2;
+    enemies = [];
+    addEnemy();
+    addEnemy();
+    addEnemy();
+    addEnemy();
+    addEnemy();
+    addEnemy();
+    addEnemy();
 }
 
 /**
