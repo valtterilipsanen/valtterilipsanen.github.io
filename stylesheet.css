@@ -46,6 +46,8 @@
 .can {
     margin-left: 10px;
     margin-top: 10px;
+    max-width: 1920px;
+    max-height: 1276px;
 }
 .header {
     transition: 1s;

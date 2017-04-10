@@ -12,17 +12,16 @@ function direction(ang){
     this.y = Math.sin(ang);
 }
 
-var width = window.innerWidth - 25;
-var height = window.innerHeight - 25;
+
 var eSize = 20;
-var eSpeed = 1;
+var eSpeed = 5;
     
 
 var dirs = ["N","NE","E","SE","S","SW","W","NW"]
 var enemies = []; 
 
 function drawEnemies(context) {
- console.log(enemies.length)
+
   for(i = 0; i < enemies.length; i++){
   var e = enemies[i];
   

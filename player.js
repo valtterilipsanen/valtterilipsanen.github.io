@@ -1,23 +1,133 @@
 
-function player(x,y,r,speed,dir) {
+function player(x,y,r,speed,dir,frame,ticks) {
  this.x = x;
  this.y = y;
  this.r = r;
  this.speed = speed;
  this.dir = dir;
+ this.frame = frame;
+ this.ticks = ticks;
+ 
 }
 
 
-var width = window.innerWidth - 25;
-var height = window.innerHeight - 25;
+var width = Math.min(window.innerWidth - 25, 1920);
+var height = Math.min(window.innerHeight - 25, 1276);
     
 /* Player */
 var plMod = -27;
 
-var p = new player(width / 2,height / 2,69,4, 'E'); 
+var p = new player(width / 2,height / 2,69,4, 'E', 0, 0); 
 
-function drawPlayer(context) {
+function row(){
+    switch (p.dir){
+        case 'E':
+            return 0;
+            break;
+        case 'N':
+            return 1;
+            break;
+        case 'W':
+            return 7;
+            break;
+        case 'S':
+            return 4;
+            break;
+      }
+}
+
+function sprite (options) {			
+    var that = {};  
+    frameIndex = p.frame,
+    rowIndex = row(),
+    tickCount = p.ticks,
+    ticksPerFrame = 5,
+    numberOfFrames = options.numberOfFrames || 1,
+    
+					
+    that.context = options.context;
+    that.width = options.width;
+    that.height = options.height;
+    that.image = options.image;
+    that.loop = options.loop;
+    that.key = options.key;
+    
+      
+    that.update = function (k) {
+                if(38 in k){
+                    rowIndex = 1;
+                }
+                if(39 in k){
+                    rowIndex = 0; 
+                }
+                if(40 in k){
+                    rowIndex = 4;
+                }
+                if(37 in k){
+                    rowIndex = 7;
+                }
+        
+        
+        p.ticks += 1;
+        console.log(frameIndex)
+			
+        if (tickCount > ticksPerFrame) {
+        
+        	p.ticks = 0;
+        	
+            if (frameIndex < numberOfFrames - 1) {	
+                // Go to the next frame
+                p.frame += 1;
+            }	else if (that.loop) {
+                p.frame = 0;
+            }
+        }
+    };
+    
+      
+    that.render = function () {
+
+        // Draw the animation
+        that.context.drawImage(
+           that.image,
+           frameIndex * that.width / numberOfFrames,
+           rowIndex * that.height / numberOfFrames,
+           that.width / numberOfFrames,
+           that.height / numberOfFrames,
+           p.x - p.r,
+           p.y - p.r,
+           that.width / numberOfFrames,
+           that.height / numberOfFrames);
+    };
+    
+      
+
+    return that;
+ }
+
+
+function drawPlayer(ctx, keys) {
   
+  var plReady = false;
+  var plImage = new Image();
+  plImage.onload = function () {
+  plReady = true;
+  };
+  plImage.src = "assets/plWalk.png";
+    
+  var pl = sprite({
+    context: ctx,
+    width: 1104,
+    height: 1104,
+    image: plImage,
+    loop: true,
+    key: keys,
+    numberOfFrames: 8,
+    
+    
+});
+pl.update(keys); 
+pl.render();
 }
 
  
@@ -29,27 +139,27 @@ function movePlayer(dir) {
   switch (dir) {
     case "left": 
       p.x -= p.speed;
-      if (p.x < p.r) {
-        p.x = p.r;
+      if (p.x < p.r + plMod) {
+        p.x = p.r  + plMod;
           
       }
       break;
     case "right":
       p.x += p.speed;
-      if (p.x > width - p.r) {
-        p.x = width - p.r;
+      if (p.x  + plMod> width - p.r) {
+        p.x = width - p.r - plMod;
       }
       break;
     case "up":
       p.y -= p.speed;
-      if (p.y < p.r) {
-        p.y = p.r;
+      if (p.y < p.r  + plMod) {
+        p.y = p.r + plMod;
       }
       break;
     case "down":
       p.y += p.speed;
-      if (p.y > height - p.r) {
-        p.y = height - p.r;
+      if (p.y + plMod > height - p.r) {
+        p.y = height - p.r - plMod;
       }
       break;
   }

@@ -2,8 +2,6 @@
 
 
 $(document).ready(function() {
-  var width = window.innerWidth - 25;
-  var height = window.innerHeight - 25;
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext("2d");
   canvas.width = width;
@@ -24,48 +22,7 @@ $(document).ready(function() {
   };
   bgImage.src = "assets/grass.jpeg";
 
-  var plReady = false;
-  var plImage = new Image();
-  plImage.onload = function () {
-  plReady = true;
-  };
-  plImage.src = "assets/plWalk.png";
-    
-    
-  function sprite (options) {
-				
-    var that = {};
-					
-    that.context = options.context;
-    that.width = options.width;
-    that.height = options.height;
-    that.image = options.image;
-    
-    that.render = function () {
 
-        // Draw the animation
-        that.context.drawImage(
-           that.image,
-           0,
-           0,
-           that.width,
-           that.height,
-           p.x - p.r,
-           p.y - p.r,
-           that.width,
-           that.height);
-    };
-    
-      
-
-    return that;
- }
- var pl = sprite({
-    context: ctx,
-    width: 138,
-    height: 138,
-    image: plImage,
-});
   
 /* Listen to keyboard events */
   var keysDown = {};
@@ -94,8 +51,7 @@ function getMousePos(canvas, evt) {
   });
   canvas.addEventListener("mousedown", function(e){
      removeEnemy(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
-     console.log("MOUSEX" + e.pageX)
-      console.log("MOUSEy" + e.pageY)
+     
   })
   
   
@@ -106,14 +62,14 @@ var render = function() {
 	}
   
   drawEnemies(ctx);
-  drawPlayer(ctx);
-  pl.render();
+  drawPlayer(ctx, keysDown);
+  
 };
 
 /* Update stuff every loop */
 var update = function(delta) {
     if (38 in keysDown) {
-        addEnemy();
+        
        movePlayer("up");
     } 
     if (40 in keysDown) {
