@@ -16,8 +16,56 @@ $(document).ready(function() {
   addEnemy();
 
 
+// Background image
+  var bgReady = false;
+  var bgImage = new Image();
+  bgImage.onload = function () {
+  bgReady = true;
+  };
+  bgImage.src = "assets/grass.jpeg";
 
-  
+  var plReady = false;
+  var plImage = new Image();
+  plImage.onload = function () {
+  plReady = true;
+  };
+  plImage.src = "assets/plWalk.png";
+    
+    
+  function sprite (options) {
+				
+    var that = {};
+					
+    that.context = options.context;
+    that.width = options.width;
+    that.height = options.height;
+    that.image = options.image;
+    
+    that.render = function () {
+
+        // Draw the animation
+        that.context.drawImage(
+           that.image,
+           0,
+           0,
+           that.width,
+           that.height,
+           p.x - p.r,
+           p.y - p.r,
+           that.width,
+           that.height);
+    };
+    
+      
+
+    return that;
+ }
+ var pl = sprite({
+    context: ctx,
+    width: 138,
+    height: 138,
+    image: plImage,
+});
   
 /* Listen to keyboard events */
   var keysDown = {};
@@ -53,10 +101,13 @@ function getMousePos(canvas, evt) {
   
 /* Draw everything */
 var render = function() {
-  ctx.fillStyle = '#000000';
-  ctx.fillRect(0,0,width,height);
+  if (bgReady) {
+		ctx.drawImage(bgImage, 0, 0);
+	}
+  
   drawEnemies(ctx);
   drawPlayer(ctx);
+  pl.render();
 };
 
 /* Update stuff every loop */

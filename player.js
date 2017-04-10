@@ -1,9 +1,10 @@
 
-function player(x,y,r,speed) {
+function player(x,y,r,speed,dir) {
  this.x = x;
  this.y = y;
  this.r = r;
  this.speed = speed;
+ this.dir = dir;
 }
 
 
@@ -11,21 +12,15 @@ var width = window.innerWidth - 25;
 var height = window.innerHeight - 25;
     
 /* Player */
+var plMod = -27;
 
-var p = new player(width / 2,height / 2,20,4); 
+var p = new player(width / 2,height / 2,69,4, 'E'); 
 
 function drawPlayer(context) {
-  var x = p.x;
-  var y = p.y;
-  context.beginPath();
-  context.fillStyle = '#FF0000';
-  context.arc(x,y,p.r,0,2*Math.PI);
-  context.fill();
-  context.closePath();
+  
 }
 
-
-
+ 
 
 
 function movePlayer(dir) {
@@ -60,9 +55,24 @@ function movePlayer(dir) {
   }
     for(k = 0; k < enemies.length; k++){
         var distance = Math.sqrt(Math.pow((p.x - enemies[k].x),2) + Math.pow((p.y - enemies[k].y),2))
-        if(distance < p.r + enemies[k].r){
+        if(distance < p.r + plMod + enemies[k].r){
             p.x = oldX;
             p.y = oldY;
+            var angle = 0;
+            var en = enemies[k];
+            
+                      
+            if(p.x >= en.x && p.y <= en.y){
+                 angle = Math.atan((p.y - en.y)/(p.x - en.x));      
+             } else if(p.x <= en.x && p.y <= en.y){
+                 angle = Math.atan((p.y - en.y)/(p.x - en.x)) + Math.PI;
+             } else if(p.x >= en.x && p.y >= en.y){
+                  angle = Math.atan((p.y - en.y)/(p.x - en.x));
+             } else if(p.x <= en.x && p.y >= en.y){
+                  angle = Math.atan((p.y - en.y)/(p.x - en.x)) + Math.PI;
+              }
+             
+             en.dir = new direction(angle + Math.PI);
         }
     }
   }

@@ -91,7 +91,7 @@ function moveEnemies() {
            }
          }
          
-         if(Math.sqrt(Math.pow((e.x-p.x),2) + Math.pow((e.y-p.y),2)) < p.r + e.r){
+         if(Math.sqrt(Math.pow((e.x-p.x),2) + Math.pow((e.y-p.y),2)) < p.r + e.r + plMod){
              e.x = oldX;
              e.y = oldY;
              var angle = 0;
