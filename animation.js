@@ -60,9 +60,9 @@ var render = function() {
   if (bgReady) {
 		ctx.drawImage(bgImage, 0, 0);
 	}
-  
-  drawEnemies(ctx);
   drawPlayer(ctx, keysDown);
+  drawEnemies(ctx);
+  
   
 };
 
