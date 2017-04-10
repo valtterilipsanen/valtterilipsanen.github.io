@@ -178,14 +178,32 @@ function moveEnemies() {
                      angle = Math.atan((e.y - p.y)/(e.x - p.x)) + Math.PI;
                  }
              
-             e.dir = new direction(angle)
+             e.dir = new direction(angle);
+         }
+         
+         if(Math.sqrt(Math.pow((e.x-c.x),2) + Math.pow((e.y-c.y),2)) < c.r + e.r + cMod){
+             e.x = oldX;
+             e.y = oldY;
+             var angle = 0;
+             c.lives -= 1;
+             
+              if(e.x >= c.x && e.y <= c.y){
+                     angle = Math.atan((e.y - c.y)/(e.x - c.x));      
+                 } else if(e.x <= c.x && e.y <= c.y){
+                     angle = Math.atan((e.y - c.y)/(e.x - c.x)) + Math.PI;
+                 } else if(e.x >= c.x && e.y >= c.y){
+                     angle = Math.atan((e.y - c.y)/(e.x - c.x));
+                 } else if(e.x <= c.x && e.y >= c.y){
+                     angle = Math.atan((e.y - c.y)/(e.x - c.x)) + Math.PI;
+                 }
+             
+             e.dir = new direction(angle);
          }
          
      }
 }
 
 function eChangeSpeed(e,am) {
-    eSpeed += am;
     e.speed += am;
 }
 
@@ -221,6 +239,9 @@ function addEnemy() {
         }
         var distance = Math.sqrt(Math.pow((newX - p.x),2) + Math.pow((newY - p.y),2));
         if(distance < eSize + p.r){
+            flag = false;
+        }
+        if(Math.sqrt(Math.pow((newX-c.x),2) + Math.pow((newY-c.y),2)) < c.r + eSize + cMod){
             flag = false;
         }
         counter = counter + 1;

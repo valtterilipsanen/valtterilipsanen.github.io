@@ -19,7 +19,7 @@ $(document).ready(function() {
         
 
   var score = 0; 
-  var lives = 5;
+  
 // Background image
   var bgReady = false;
   var bgImage = new Image();
@@ -102,11 +102,15 @@ function buttonPressed(x,y){
                 case "New Game":
                     pReset();
                     eReset();
+                    c.lives = 5;
+                    score = 0;
                     break;
                 case "Speed Up":
                     for(e = 0; e < enemies.length; e++){
                         eChangeSpeed(enemies[e], 1);
+                        eSpeed = enemies[e].speed;
                     }
+                    
                     pChangeSpeed(1);
                     break;
                     
@@ -114,7 +118,9 @@ function buttonPressed(x,y){
                     for(e = 0; e < enemies.length; e++){
                        var flag = true;
                         if(enemies[e].speed > 0){
+                        
                             eChangeSpeed(enemies[e], -1);
+                            eSpeed = enemies[e].speed;
                         }else {
                             flag = false;
                         }
@@ -153,21 +159,26 @@ function buttonPressed(x,y){
   
     
 var counter = 0;    
-/* Draw everything */
 var render = function() {
     counter += 1;
-    if(counter > 200){
-        score += p.speed;
+    if(counter > 500 / p.speed){
+        score += 1;
+        
         counter = 0;
+    
+    if(score != 0 && score % 10 == 0 ){
+        addEnemy();
     }
-    console.log(score)
+    }
   if (bgReady) {
 		ctx.drawImage(bgImage, 0, 0);
 	}
-  ctx.fillStyle = 'rgb(92, 132, 0)';
+  
   
   drawPlayer(ctx, keysDown);
   drawEnemies(ctx);
+  drawCow(ctx);
+  ctx.fillStyle = 'rgb(92, 132, 0)';
   ctx.fillRect(0, height, windowWidth, 100);
   if(buReady){
       for(k = 0; k < buttons.length; k++) {
@@ -186,13 +197,23 @@ var render = function() {
   }
   ctx.font = "40px Sans Serif";
   ctx.fillText("Score: " + score, 810, height + 63, 200);
-  ctx.fillText("Lives: " + lives, 1000, height + 63, 200);
+  ctx.fillText("Lives: " + c.lives, 1000, height + 63, 200);
+  if(c.lives == 0){
+      ctx.font = "50px Sans Serif";
+      ctx.fillText("Game Over", width / 2 - 100, height / 2, 300);
+      for(i = 0; i < enemies.length; i++){
+          enemies[i].speed = 0;
+      }
+      p.speed = 0;
+      
+      
+  }
 };
 
 /* Update stuff every loop */
 var update = function(delta) {
     if (38 in keysDown) {
-       speedUp.f;
+       
        movePlayer("up");
     } 
     if (40 in keysDown) {

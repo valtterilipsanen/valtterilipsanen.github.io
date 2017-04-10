@@ -268,7 +268,7 @@ function movePlayer(dir) {
       break;
   }
     for(k = 0; k < enemies.length; k++){
-        var distance = Math.sqrt(Math.pow((p.x - enemies[k].x),2) + Math.pow((p.y - enemies[k].y),2))
+        var distance = Math.sqrt(Math.pow((p.x - enemies[k].x),2) + Math.pow((p.y - enemies[k].y),2));
         if(distance < p.r + plMod + enemies[k].r){
             p.x = oldX;
             p.y = oldY;
@@ -288,6 +288,10 @@ function movePlayer(dir) {
              
              en.dir = new direction(angle + Math.PI);
         }
+    }
+    if(Math.sqrt(Math.pow((p.x - c.x),2) + Math.pow((p.y - c.y),2)) < c.r + p.r + plMod + cMod){
+        p.x = oldX;
+        p.y = oldY;
     }
   }
 
