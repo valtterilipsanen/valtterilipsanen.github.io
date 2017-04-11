@@ -6,7 +6,7 @@ function cow (x,y, r, lives){
     this.lives = lives;
 }
 
-var c = new cow(width / 2 - 150, height / 2, 50, 5)
+var c = new cow(width / 2 - 150, height / 2, 50, 5);
 var cMod = -5;
 
 

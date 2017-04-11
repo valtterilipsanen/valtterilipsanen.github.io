@@ -145,17 +145,17 @@ function buttonPressed(x,y){
   window.addEventListener("keydown",function(e){
       if([37,38,39,40].indexOf(e.keyCode)>-1){
           e.preventDefault();
-      };
+      }
   });
   canvas.addEventListener("mousedown", function(e){
      removeEnemy(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
      buttonPressed(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
-  })
+  });
   canvas.addEventListener("mouseup", function(e){
       for(i = 0; i < buttons.length; i ++){
           buttons[i].line = 0;
       }
-  })
+  });
   
     
 var counter = 0;    
@@ -179,7 +179,7 @@ var render = function() {
   drawEnemies(ctx);
   drawCow(ctx);
   ctx.fillStyle = 'rgb(92, 132, 0)';
-  ctx.fillRect(0, height, windowWidth, 100);
+  ctx.fillRect(0, height, Math.min(windowWidth,1920), 100);
   if(buReady){
       for(k = 0; k < buttons.length; k++) {
           var bu = buttons[k];

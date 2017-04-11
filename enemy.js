@@ -15,7 +15,7 @@ function direction(ang){
     this.y = Math.sin(ang);
 }
 
-var eMod = -5
+var eMod = -5;
 var eSize = 20;
 var eSpeed = 2;
     
@@ -102,8 +102,8 @@ function drawEnemies(ctx) {
         numberOfFrames: 5,
         
     },e);
-      E.update(e)
-      E.render(e)
+      E.update(e);
+      E.render(e);
   }
 
 }
@@ -156,7 +156,7 @@ function moveEnemies() {
                  }
              
              e.dir = new direction(angle);
-             en.dir = new direction(angle + Math.PI)
+             en.dir = new direction(angle + Math.PI);
                       
                       
              }
@@ -283,7 +283,6 @@ function eReset() {
     addEnemy();
 }
 
-/**
 
 
 
@@ -291,175 +290,3 @@ function eReset() {
 
 
 
-var canAdd = true;
-function addEnemy() {
-    console.log(canAdd);
-    if(canAdd){
-    var x = 0;
-    var y = 0;
-    var counter = 0;
-    
-    var flag = false;
-    while(flag === false && counter < 1000){
-    x = getRandomInteger((eSize / 2), width - (eSize / 2));
-    y = getRandomInteger((eSize / 2), height - (eSize / 2));
-    
-    flag = true;
-    for(i = 0; i < enemies.length; i++){
-        if((enemies[i].x + eSize) > x && (enemies[i].x - eSize) < x){
-           if((enemies[i].y + eSize) > y && (enemies[i].y - eSize) < y){
-            flag = false;
-        }
-        }
-      } 
-        counter = counter + 1;
-        console.log(counter);
-        if(counter >= 1000) canAdd = false;
-    }
-    var d = dirs[getRandomInteger(0, dirs.length - 1)]
-    if(counter < 1000){
-    enemies.push(new enemy(x, y, eSize, eSpeed, d))
-    }
-  }
-}
-
-function getRandomInteger( min, max ){
-    var difference = max - min;
-    
-    var number = parseInt(Math.round(Math.random() * difference + min));
-    return number;
-}
-*/
-
-
-
-
-
-/**
- for(i = 0; i < enemies.length; i++){
-        if(e.dir != enemies[i].dir &&(enemies[i].x + eSize) >= e.x && (enemies[i].x + eSize) <= e.x && (enemies[i].y + eSize) >= e.y && (enemies[i].y + eSize) <= e.y){
-        }
-      }
-function moveEnemies() {
-  for(i = 0; i < enemies.length; i++){
-  var e = enemies[i];
-  switch (e.dir) {
-    case "W": 
-      e.x -= e.speed;
-      collide(e);
-      if (e.x < (e.w / 2)) {
-        e.x = (e.w / 2);
-        e.dir = "E";
-      }
-      break;
-    case "E":
-      e.x += e.speed;
-      collide(e);
-      if (e.x > width - (e.w / 2)) {
-        e.x = width - (e.w / 2);
-        e.dir = "W";
-      }
-      break;
-    case "N":
-      e.y -= e.speed;
-      collide(e);  
-      if (e.y < (e.w / 2)) {
-        e.y = (e.w / 2);
-        e.dir = "S";
-      }
-      break;
-    case "S":
-      e.y += e.speed;
-      collide(e); 
-      if (e.y > height - (e.w / 2)) {
-        e.y = height - (e.w / 2);
-        e.dir = "N"
-      }
-      break;
-    case "SW": 
-      e.x -= e.speed;
-      e.y += e.speed;
-      collide(e); 
-      if (e.x < (e.w / 2)) {
-        e.x = (e.w / 2);
-        e.dir = "SE";
-        addEnemy()
-      }
-      if (e.y > height - (e.w / 2)) {
-        e.y = height - (e.w / 2);
-        e.dir = "NW";
-      }
-      break;
-    case "NE":
-      e.x += e.speed;
-      e.y -= e.speed;
-      collide(e); 
-      if (e.x > width - (e.w / 2)) {
-        e.x = width - (e.w / 2);
-        e.dir = "NW";
-      }
-      if (e.y < (e.w / 2)) {
-        e.y = (e.w / 2);
-        e.dir = "SE";
-      }
-      break;
-    case "SE":
-      e.x += e.speed;
-      e.y += e.speed;
-      collide(e); 
-      if (e.y > height - (e.w / 2)) {
-        e.y = height - (e.w / 2);
-        e.dir = "NE";
-      }
-      if (e.x > width - (e.w / 2)) {
-        e.x = width - (e.w / 2);
-        e.dir = "SW";
-      }
-      break;
-    case "NW":
-      e.x -= e.speed;
-      e.y -= e.speed;
-      collide(e); 
-      if (e.x < (e.w / 2)) {
-        e.x = (e.w / 2);
-        e.dir = "NE";
-      }
-      if (e.y < (e.w / 2)) {
-        e.y = (e.w / 2);
-        e.dir = "SW";
-      }
-      break;
-  }
-  }
-}
-
-
-function changeDirection(e) {
-    switch(e.dir) {
-      case "W":
-        e.dir = "E"; 
-        break;
-      case "NW":
-        e.dir = "SE"; 
-        break;
-      case "N":
-        e.dir = "S"; 
-        break;
-      case "NE":
-        e.dir = "SW"; 
-        break;
-      case "E":
-        e.dir = "W"; 
-        break;
-      case "SE":
-        e.dir = "NW"; 
-        break;
-      case "S":
-        e.dir = "W"; 
-        break;
-      case "SW":
-        e.dir = "NE"; 
-        break;
-    }
-}
-*/
