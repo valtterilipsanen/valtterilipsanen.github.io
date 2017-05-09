@@ -6,6 +6,11 @@
     background-image: url(assets/tausta.jpg);
     background-color: rgb(56, 57, 26);
 }
+
+.bg {
+  background-image: url(assets/sprites/tausta.jpg);
+  background-color: rgb(56, 57, 26);
+}
 .navigation {
     width: 100%;
     background-color: rgb(0, 100, 0);
@@ -21,10 +26,10 @@
 }
 .navigation ul{
     margin-right: 20px;
-    
+
 }
 .navigation li {
-    display: inline-block; 
+    display: inline-block;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -33,11 +38,11 @@
     margin-left: 7px;
     text-decoration: none;
     text-decoration-color: black;
-    color: black; 
+    color: black;
     font-size: 14px;
     font-family: 'Acme',regular;
     transition:1s;
-    
+
 }
 .navigation a:hover{
     color:rgb(117, 255, 117);
@@ -48,6 +53,24 @@
     margin-top: 10px;
     max-width: 1920px;
     max-height: 1276px;
+}
+
+.game {
+  display: block;
+  max-width: 1000px;
+  max-height: 700px;
+  padding-left: auto;
+  padding-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(0,100,0,0.8);
+  border-width: 4px;
+  border-color: rgb(0,50,0);
+  border-radius: 5px;
+  border-style: solid;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .header {
     transition: 1s;
@@ -126,14 +149,14 @@
     margin-left: 5%;
     margin-right: 5%;
     font-size: 10px;
-    font-family: 'Montserrat',regular; 
+    font-family: 'Montserrat',regular;
 }
 .videoContainer{
     width: 80%;
     max-width: 600px;
     height: auto;
     margin-left: auto;
-    margin-right: auto;  
+    margin-right: auto;
 }
 .videoContainer iframe{
     border-width: 0px;
@@ -219,7 +242,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    
+
     .footer{
         font-size: 15px;
     }
@@ -240,7 +263,7 @@
         padding-bottom: 10px;
     }
     .text{
-       font-size: 25px; 
+       font-size: 25px;
     }
     .list{
         font-size: 20px;
@@ -261,7 +284,7 @@
     .videoContainer iframe{
         height: 350px;
     }
-    
+
     #cover{
         min-height: 390px;
     }
@@ -275,9 +298,9 @@
         padding-bottom: 10px;
     }
     .text{
-       font-size: 32px; 
+       font-size: 32px;
     }
-    
+
     .list{
         font-size: 35px;
         margin-left: auto;
@@ -316,12 +339,12 @@
         margin-right: auto;
         width: 500px;
     }
-   
+
     .header{
         width: 100%;
         margin-top: 69px;
         font-size: 35px;
-    } 
+    }
     #headerBackground{
         margin-top: 30px;
         margin-bottom: 30px;
@@ -329,7 +352,7 @@
         margin-left: auto;
         margin-right: auto
     }
-    
+
     #image{
         width: 500px;
     }
@@ -344,6 +367,5 @@
     #cover{
         min-height: 200px;
     }
-    
-}
 
+}

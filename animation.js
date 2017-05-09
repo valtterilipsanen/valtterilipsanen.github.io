@@ -1,145 +1,143 @@
+var score = 0;
+var gameOn = true;
+var gamePaused = false;
+var menuOn = true;
+var startPressed = false;
+var helpPressed = false;
+var helpOn = false;
+var easterEgg = true;
 
 
 
 $(document).ready(function() {
-  var canvas = document.createElement('canvas');
+  var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext("2d");
   canvas.width = windowWidth;
   canvas.height = windowHeight;
   document.body.appendChild(canvas);
-  addEnemy();
-  addEnemy();
-  addEnemy();
-  addEnemy();
-  addEnemy();
-  addEnemy();
-  addEnemy();
-  addEnemy();
-  addEnemy();
-        
 
-  var score = 0; 
-  
-// Background image
-  var bgReady = false;
-  var bgImage = new Image();
-  bgImage.onload = function () {
-  bgReady = true;
-  };
-  bgImage.src = "assets/grass.jpeg";
+  var bgImg = new Image();
+  bgImg.src = "assets/sprites/yellowGrass.jpg"
+  var menu = new Image();
+  menu.src = "assets/sprites/menu.png"
+  var menuStart = new Image();
+  menuStart.src = "assets/sprites/menuStart.png"
+  var menuHelp = new Image();
+  menuHelp.src = "assets/sprites/menuHelp.png"
+  var help = new Image();
+  menuHelp.src = "assets/sprites/help.png"
+  var end = new Image();
+  end.src = "assets/sprites/ending.png"
 
-// Button image
-  var buReady = false;
-  var buImage = new Image();
-  buImage.onload = function () {
-  buReady = true;
-  };
-  buImage.src = "assets/buttons.png";
-
-  function button(text, line, x, y){
-      this.text = text;
-      this.line = line;
-      this.x = x;
-      this.y = y;
-  }
-  
-  function sprite (options, b) {
-				
-    var that = {};
-	
-    frameIndex = b.line;			
-    
-    that.context = options.context;
-    that.width = options.width;
-    that.height = options.height;
-    that.image = options.image;
-
-    that.render = function (b) {
-
-        
-        that.context.drawImage(
-           that.image,
-           0,
-           frameIndex * that.height / 2,
-           that.width,
-           that.height / 2,
-           b.x,
-           b.y,
-           that.width,
-           that.height / 2);
-    };
-      
-    return that;
-}
-    
-    
-  
-  var speedUp = new button("Speed Up", 0, 256 + 20 , height + 18);
-  var speedDown = new button("Speed Down", 0, 10, height + 18);
-  var newGame = new button("New Game", 0, 512 + 30, height + 18);
-  
-  var buttons = [speedUp, speedDown, newGame];
-    
 /* Listen to keyboard events */
   var keysDown = {};
-  
-    
-function getMousePos(canvas, evt) {
+
+
+
+  var music = new Audio('assets/sounds/music.mp3');
+  var startSound = new Audio('assets/sounds/start.wav');
+  var tSound = new Audio('assets/sounds/tractor sound.wav');
+
+  function startGame(){
+  easterEgg = true;
+  gameOn = true;
+  cows = [];
+  hippies = [];
+  gMen = [];
+  splats = [];
+  poops = [];
+  p = new player(width / 2, height / 2, 40, pSpeed, 0);
+  addCow();
+  addCow();
+  addCow();
+  addCow();
+  addCow();
+  music.pause();
+  music.currentTime = 0;
+  tSound.pause();
+  tSound.currentTime = 0;
+  startSound.play();
+  }
+  startGame();
+
+  function getMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
     return {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
     };
 }
- 
-    
+
+
 function buttonPressed(x,y){
-    for(k = 0; k < buttons.length; k++){
-        var b = buttons[k];
-        if(x < b.x + 256 && x > b.x && y < b.y + 128 && y > b.y){
-            b.line = 1;
-            switch(b.text){
-                case "New Game":
-                    pReset();
-                    eReset();
-                    c.lives = 5;
-                    score = 0;
-                    break;
-                case "Speed Up":
-                    for(e = 0; e < enemies.length; e++){
-                        eChangeSpeed(enemies[e], 1);
-                        eSpeed = enemies[e].speed;
-                    }
-                    
-                    pChangeSpeed(1);
-                    break;
-                    
-                case "Speed Down":
-                    for(e = 0; e < enemies.length; e++){
-                       var flag = true;
-                        if(enemies[e].speed > 0){
-                        
-                            eChangeSpeed(enemies[e], -1);
-                            eSpeed = enemies[e].speed;
-                        }else {
-                            flag = false;
-                        }
-                    }
-                        
-                    if(p.speed > 1 && flag ){
-                        pChangeSpeed(-1);
-                    }
-                    break;      
-           }
-        }
+    if(x > 250 && x < 500 && y < 520 && y > 470){
+      startPressed = true;
     }
-}    
+    if(x > 510 && x < 765 && y < 520 && y > 470){
+      helpPressed = true;
+    }
+}
+function buttonReleased(x,y){
+  if(x > 250 && x < 500 && y < 520 && y > 470){
+    menuOn = false;
+    startGame();
+  }
+  if(x > 510 && x < 765 && y < 520 && y > 470){
+    helpOn = true;
+
+  }
+}
+
+canvas.addEventListener("mousedown", function(e){
+     buttonPressed(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
+  });
+canvas.addEventListener("mouseup", function(e){
+    buttonReleased(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
+    startPressed = false;
+  });
+  // Sound looping
+  //http://stackoverflow.com/questions/7330023/gapless-looping-audio-html5
+  // user: shooting_sparks
+  startSound.addEventListener('timeupdate', function(){
+                var buffer = 0.5;
+                if(this.currentTime > this.duration - buffer){
+                    tSound.play();
+                    music.play();
+                }}, false);
+  tSound.addEventListener('timeupdate', function(){
+                var buffer = 0.44;
+                if(this.currentTime > this.duration - buffer){
+                    this.currentTime = 0;
+                    this.play();
+                }}, false);
+
+  music.addEventListener('timeupdate', function(){
+                var buffer = 0.44;
+                if(this.currentTime > this.duration - buffer){
+                this.currentTime = 0;
+                this.play();
+                }}, false);
+
+
+
   window.addEventListener("keydown", function(e) {
      keysDown[e.keyCode] = true;
+     if(e.keyCode == 19){
+       pauseGame();
+     }
+     if(e.keyCode == 13){
+       startGame();
+     }
   }, false);
-  
+
   window.addEventListener("keyup", function(e) {
     delete keysDown[e.keyCode];
+    if((37 in keysDown && 39 in keysDown) || !((37 in keysDown || 39 in keysDown))){
+      p.img = "s";
+    }
+    if(!(38 in keysDown)){
+      p.speed = pSpeed;
+    }
   });
 
   window.addEventListener("keydown",function(e){
@@ -147,85 +145,95 @@ function buttonPressed(x,y){
           e.preventDefault();
       }
   });
-  canvas.addEventListener("mousedown", function(e){
-     removeEnemy(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
-     buttonPressed(getMousePos(canvas,e).x, getMousePos(canvas,e).y);
-  });
-  canvas.addEventListener("mouseup", function(e){
-      for(i = 0; i < buttons.length; i ++){
-          buttons[i].line = 0;
-      }
-  });
-  
-    
-var counter = 0;    
+
+
+
+
 var render = function() {
-    counter += 1;
-    if(counter > 500 / p.speed){
-        score += 1;
-        
-        counter = 0;
-    
-    if(score != 0 && score % 10 == 0 ){
-        addEnemy();
-    }
-    }
-  if (bgReady) {
-		ctx.drawImage(bgImage, 0, 0);
-	}
-  
-  
-  drawPlayer(ctx, keysDown);
-  drawEnemies(ctx);
-  drawCow(ctx);
-  ctx.fillStyle = 'rgb(92, 132, 0)';
-  ctx.fillRect(0, height, Math.min(windowWidth,1920), 100);
-  if(buReady){
-      for(k = 0; k < buttons.length; k++) {
-          var bu = buttons[k];
-          var buttonSprite = sprite({
-            context: ctx,
-            width: 256,
-            height: 128,
-            image: buImage   
-        }, bu);
-        buttonSprite.render(bu); 
-        ctx.fillStyle = '#ffffff';
-        ctx.font = "40px Sans Serif";
-        ctx.fillText(bu.text, bu.x + 27, bu.y + 45, 200);
-      } 
+if(menuOn){
+
+  if(startPressed){
+    ctx.drawImage(menuStart,0,0)
+  }else if(helpPressed){
+    ctx.drawImage(menuHelp,0,0)
+  } else {
+    ctx.drawImage(menu,0,0)
   }
-  ctx.font = "40px Sans Serif";
-  ctx.fillText("Score: " + score, 810, height + 63, 200);
-  ctx.fillText("Lives: " + c.lives, 1000, height + 63, 200);
-  if(c.lives == 0){
-      ctx.font = "50px Sans Serif";
-      ctx.fillText("Game Over", width / 2 - 100, height / 2, 300);
-      for(i = 0; i < enemies.length; i++){
-          enemies[i].speed = 0;
-      }
-      p.speed = 0;
-      
-      
+  if(helpOn){
+    ctx.drawImage(help,0,0)
+  }
+} else {
+  if(gameOn && !gamePaused){
+  for(i = 0; i < width / 200; i++){
+    for(k = 0; k < height / 200; k++){
+      ctx.drawImage(bgImg, i * 200, k * 200, 200, 200);
+    }
+  }
+  ctx.drawImage(bgImg,0,0, 100, 100)
+  cowTick();
+  gManTick();
+  hippieTick();
+  playerTick();
+  splatTick();
+  moveCows();
+  movePlayer();
+  moveHippies();
+  moveGMen();
+  drawSplatter(ctx);
+  drawPoops(ctx);
+  drawHippies(ctx);
+  drawCows(ctx);
+  drawGMen(ctx)
+  drawPlayer(ctx);
+  ctx.fillStyle = '#000000';
+  ctx.font = "40px Georgia"
+  ctx.fillText("Score: " + score, 5, 30);
+} else {
+  ctx.drawImage(end,0,0);
+}
   }
 };
 
+function pauseGame(){
+  if(gamePaused){
+    gamePaused = false;
+  }else {
+    gamePaused = true;
+  }
+}
 /* Update stuff every loop */
 var update = function(delta) {
-    if (38 in keysDown) {
-       
-       movePlayer("up");
-    } 
-    if (40 in keysDown) {
-       movePlayer("down");
+
+  if(37 in keysDown && 39 in keysDown){
+    p.img = "s";
+  } else if (37 in keysDown) {
+      p.img = "l";
+      changeDir("left");
+    }else if(39 in keysDown) {
+      p.img = "r";
+      changeDir("right");
+    }else if (38 in keysDown){
+      p.speed = pSpeed * 1.5;
+    } else if (27 in keysDown) {
+      menuOn = true;
+      helpOn = false;
+      startPressed = false;
+      helpPressed = false;
+
     }
-    if (37 in keysDown) {
-      movePlayer("left");
+    if(cows.length == 0){
+      gameOn = false;
     }
-    if (39 in keysDown) {
-      movePlayer("right");
+
+    if(67 in keysDown && 79 in keysDown && 87 in keysDown && 83 in keysDown){
+      if(easterEgg){
+        easterEgg = false;
+        window.open("https://www.youtube.com/watch?v=FavUpD_IjVY")
+     }
     }
-    moveEnemies()
+
+
+
 };
 
 /* Time-based motion animation */
@@ -233,16 +241,28 @@ var main = function() {
   var now = Date.now();
   var delta = now - then;
 
+if(!gamePaused){
   update(delta / 1000);
   render();
-
+}else{
+  ctx.fillStyle = '#000000';
+  ctx.font = "50px Georgia"
+  ctx.fillText("Tauko", 450, 300);
+}
   then = now;
 
   // Request to do this again ASAP
   requestAnimationFrame(main);
 };
-  
+
 var then = Date.now();
 main();
-  
+
 });
+
+function getRandomInteger( min, max ){
+    var difference = max - min;
+
+    var number = parseInt(Math.round(Math.random() * difference + min));
+    return number;
+}
