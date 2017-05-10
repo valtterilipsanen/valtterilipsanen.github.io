@@ -56,12 +56,12 @@
 }
 
 .game {
-  
+
   display: block;
   max-width: 1000px;
   max-height: 700px;
-  padding-left: auto;
-  padding-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: rgba(0,100,0,0.8);
