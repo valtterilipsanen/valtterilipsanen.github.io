@@ -188,7 +188,7 @@ if(menuOn){
   drawPlayer(ctx);
   ctx.fillStyle = '#000000';
   ctx.font = "40px Georgia"
-  ctx.fillText("Pisteet: " + score, 5, 30);
+  ctx.fillText("Pisteet: " + score, 5, 35);
 } else {
   ctx.drawImage(end,0,0);
 }
