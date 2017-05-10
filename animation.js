@@ -27,7 +27,7 @@ $(document).ready(function() {
   var help = new Image();
   menuHelp.src = "assets/sprites/help.png"
   var end = new Image();
-  end.src = "assets/sprites/ending.png"
+  end.src = "assets/sprites/ending.svg"
 
 /* Listen to keyboard events */
   var keysDown = {};
@@ -187,7 +187,7 @@ if(menuOn){
   drawPlayer(ctx);
   ctx.fillStyle = '#000000';
   ctx.font = "40px Georgia"
-  ctx.fillText("Score: " + score, 5, 30);
+  ctx.fillText("Pisteet: " + score, 5, 30);
 } else {
   ctx.drawImage(end,0,0);
 }
