@@ -40,6 +40,7 @@ $(document).ready(function() {
 
   function startGame(){
   easterEgg = true;
+  score = 0;
   gameOn = true;
   cows = [];
   hippies = [];
@@ -122,7 +123,7 @@ canvas.addEventListener("mouseup", function(e){
 
   window.addEventListener("keydown", function(e) {
      keysDown[e.keyCode] = true;
-     if(e.keyCode == 19){
+     if(e.keyCode == 80){
        pauseGame();
      }
      if(e.keyCode == 13){
