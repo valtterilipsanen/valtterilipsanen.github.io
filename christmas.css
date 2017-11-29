@@ -1,0 +1,43 @@
+
+
+#slideImg{
+  width: 100%;
+  height: auto;
+  margin: 0px;
+  border: 5px;
+  border-color: DarkGreen;
+  padding: 0px;
+}
+
+.body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0px;
+  padding: auto;
+  background-color: DarkRed;
+  background-image: url("assets/christmas/back.jpg");
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1px;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.slides {
+  margin: auto;
+  width: 90%;
+  border: 3px;
+  border-color: DarkGreen;
+  padding: 10px;
+}
+
+#title{
+  width: 100%;
+  border: 3px;
+  border-color: DarkGreen;
+}

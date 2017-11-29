@@ -12,30 +12,30 @@ window.onload = function(){
         document.getElementById("slideshow").style.backgroundImage = jsonData.articles[0].image;
         document.getElementById("slideshow").style.backgroundImage = jsonData.articles[1].image;
         document.getElementById("slideshow").style.backgroundImage = jsonData.articles[2].image;
-        $("#slideshow").slideUp(400, function(){
+        $("#slideshow").slideUp(800, function(){
             $('#slideDate').html(data.articles[localStorage.currentSlide].date);
             $('#slideHeader').html(data.articles[localStorage.currentSlide].title);
             $('#slideText').html(data.articles[localStorage.currentSlide].text);
             document.getElementById("slideshow").style.backgroundImage = jsonData.articles[localStorage.currentSlide].image;
-            $("#slideshow").slideDown(400);
-    }); 
+            $("#slideshow").slideDown(800);
+    });
     });
 };
 
 var play = window.setInterval(function(){
     nextSlide();
-},6000);
+},10000);
 
 
 
-function nextSlide(){ 
-    $("#slideshow").slideUp(400, function(){
+function nextSlide(){
+    $("#slideshow").slideUp(800, function(){
         localStorage.currentSlide = (localStorage.currentSlide + 1) % 3;
         $('#slideDate').html(jsonData.articles[localStorage.currentSlide].date);
         $('#slideHeader').html(jsonData.articles[localStorage.currentSlide].title);
         $('#slideText').html(jsonData.articles[localStorage.currentSlide].text);
         document.getElementById("slideshow").style.backgroundImage = jsonData.articles[localStorage.currentSlide].image;
-        $("#slideshow").slideDown(400);
+        $("#slideshow").slideDown(800);
     });
 }
 
@@ -45,13 +45,13 @@ function previousSlide(){
     } else {
       localStorage.currentSlide = localStorage.currentSlide - 1 ;
     }
-    $("#slideshow").slideUp(400, function(){
+    $("#slideshow").slideUp(800, function(){
         $('#slideDate').html(jsonData.articles[localStorage.currentSlide].date);
         $('#slideHeader').html(jsonData.articles[localStorage.currentSlide].title);
-        $('#slideText').html(jsonData.articles[localStorage.currentSlide].text);  
+        $('#slideText').html(jsonData.articles[localStorage.currentSlide].text);
         document.getElementById("slideshow").style.backgroundImage = jsonData.articles[localStorage.currentSlide].image;
         $("slideshow").slideDown("slow", function(){});
-        $("#slideshow").slideDown(400);
+        $("#slideshow").slideDown(800);
     });
 }
 
@@ -62,11 +62,7 @@ function togglePlay(){
   } else {
       play = window.setInterval(function(){
           nextSlide();
-      },6000); 
+      },6000);
       document.getElementById("playButton").innerHTML = "Pysäytä";
   }
 }
-
-
-
-
