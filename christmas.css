@@ -75,3 +75,9 @@
 #slideshow{
   text-decoration-color: green;
 }
+
+.pics{
+  width: 100%;
+  border: 3px solid DarkGreen;
+  max-width: 1000px;
+}
