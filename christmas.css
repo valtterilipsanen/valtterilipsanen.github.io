@@ -78,6 +78,8 @@
 
 .pics{
   width: 100%;
+  border: 5px;
+  border-color: DarkGreen;
   border: 3px solid DarkGreen;
   max-width: 1000px;
 }
