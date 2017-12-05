@@ -8,13 +8,13 @@ var bSound;
 
 $(document).ready(function() {
 
-b0Img.src = "assets/sprites/vero0.png"
-b1Img.src = "assets/sprites/vero1.png"
-b2Img.src = "assets/sprites/vero2.png"
-b3Img.src = "assets/sprites/vero3.png"
-b4Img.src = "assets/sprites/vero4.png"
+b0Img.src = "assets/sprites/vero0.png";
+b1Img.src = "assets/sprites/vero1.png";
+b2Img.src = "assets/sprites/vero2.png";
+b3Img.src = "assets/sprites/vero3.png";
+b4Img.src = "assets/sprites/vero4.png";
 
-bSound = new Audio('assets/sounds/bear1.wav')
+bSound = new Audio('assets/sounds/bear1.wav');
 });
 
 
@@ -132,13 +132,13 @@ function moveGMen() {
     }
 
     if(cows.length > 0){
-    var cow = cows[0]
+    var cow = cows[0];
     var dist = Math.sqrt(Math.pow((e.x - cow.x),2) + Math.pow((e.y - cow.y),2));
     for(k = 1; k < cows.length; k++){
       var d =  Math.sqrt(Math.pow((e.x - cows[k].x),2) + Math.pow((e.y - cows[k].y),2));
       if(d < dist){
         dist = d;
-        cow = cows[k]
+        cow = cows[k];
       }
     }
 
@@ -163,7 +163,7 @@ function moveGMen() {
     for(g = 0; g < cows.length; g++){
         var distance = Math.sqrt(Math.pow((e.x - cows[g].x),2) + Math.pow((e.y - cows[g].y),2));
             if(distance < e.r + cows[g].r - 20){
-              bSound.pause()
+              bSound.pause();
               bSound.currentTime = 0;
               bSound.play();
                 killCow(g);
@@ -175,7 +175,7 @@ function moveGMen() {
     for(g = 0; g < hippies.length; g++){
         var distance = Math.sqrt(Math.pow((e.x - hippies[g].x),2) + Math.pow((e.y - hippies[g].y),2));
             if(distance < e.r + hippies[g].r - 10){
-              bSound.pause()
+              bSound.pause();
               bSound.currentTime = 0;
               bSound.play();
               killHippie(g);

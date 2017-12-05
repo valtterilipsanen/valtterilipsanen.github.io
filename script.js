@@ -87,6 +87,17 @@ another_bob.compareAge(eve);
 eve.compareAge(another_bob);
 another_bob.namesake(bob);
 
+function sum() {
+  var sum = 0;
+  for (var i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
+console.log(sum(1, 2, 3, 4, 5));
+
+jQuery.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?&tags=whale", function(data) { console.log(data); });
 
 window.onload = function(){
     setNumber(getRandomInteger(minimum, maximum));
